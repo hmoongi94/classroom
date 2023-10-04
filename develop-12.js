@@ -35,7 +35,6 @@
    /**
     * file system 모듈을 사용하여 미리 정적으로 만들어진 index.html 파일을 콜백함수로 읽어들인 것을 '응답 데이터'로 활용한 예시이다.
     */
- 
    fs.readFile("./index.html", "utf-8", function(err, data){
      if(err){
        console.error('파일을 읽지 못했습니다.');
