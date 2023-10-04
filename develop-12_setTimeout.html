@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin:0; padding:0; box-sizing: border-box;
+    }
+    #root{
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* 동적으로 생성될 요소에 클래스를 부여하는 패턴 */
+    .heart{
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      position: absolute;
+    }
+
+    .fadeout-animate{
+      animation: fadeout-animate 2s forwards;
+    }
+    /* 복잡한 프로그래밍 없이도 css만으로 간단한 애니메이션이 가능하다. */
+    /* 단순 동작은 css로 충분히 가능하지만, '판단'이 들어가는 경우, 프로그래밍 방식으로 전환필요 */
+    @keyframes fadeout-animate{
+      from{
+        opacity: 1;
+      }
+      to{
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <button id="heart-button">Click Me</button>
+    <div id="heart-container"></div>
+  </div>
+  <script>
+    const heartButton = document.getElementById("heart-button");
+
+    heartButton.addEventListener("click",function(){
+      const heart = document.createElement("div")
+      heart.className = "heart";
+      // 하트 요소를 컨테이너에 추가
+      const container = document.getElementById("heart-container")
+      container.appendChild(heart);
+      // 생성한 하트 요소를 위 컨테이너 부분에 자식으로 추가
+      // 1초 = 1000 밀리세컨드 0.05초 = 50 밀리세컨드 후에 fadeout-animate 효과 적용
+      setTimeout(function(){
+        heart.classList.add("fadeout-animate");
+        // 위의 heart는 스타일링 클래스, fadeout-animate는 애니메이션 클래스
+      },50);
+      // fadeout-animate이 끝난 후에 하트요소 제거
+      setTimeout(function(){
+        container.removeChild(heart);
+      },2050);
+    })
+  </script>
+  
+</body>
+</html>
