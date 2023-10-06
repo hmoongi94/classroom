@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin:0; padding:0; box-sizing: border-box;}
+    #root {
+      width: 100vw;
+      height: 100vh;
+      padding-top: 100px;
+      padding-left: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div></div>
+    <div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script>
+    div = document.getElementsByTagName("div")
+    console.dir(div)
+
+    // root
+    div[0].style.display = "flex"
+
+    // aimlab
+    div[1].style.width = "800px"
+    div[1].style.height = "800px"
+    div[1].style.backgroundColor = "#d9d9d9"
+
+    let makePTag 
+    let div1_makePTag
+    let target 
+
+    target = function(){
+      makePTag = document.createElement("p")
+      div1_makePTag = div[1].appendChild(makePTag)
+      p = document.getElementsByTagName("p")
+      for(i=0; i<p.length; i++){
+        p[i].style.width = "100px"
+        p[i].style.height = "100px"
+        p[i].style.borderRadius = "90px"
+        p[i].style.backgroundColor = "black"
+      }
+    }
+
+
+    // 오른쪽 점수판 및 시작버튼
+    div[2].display = "flex"
+    div[2].style.position = "relative"
+    div[2].style.top = "300px"
+    
+
+    div[3].style.width = "300px"
+    div[3].style.height = "70px"
+    div[3].style.position = "relative"
+    div[3].style.marginTop = "20px"
+    div[3].style.marginLeft = "20px"
+    div[3].style.backgroundColor = "#d9d9d9"
+
+    div[4].style.width = "300px"
+    div[4].style.height = "70px"
+    div[4].style.position = "relative"
+    div[4].style.marginTop = "20px"
+    div[4].style.marginLeft = "20px"
+    div[4].style.backgroundColor = "#d9d9d9"
+
+    div[5].style.width = "300px"
+    div[5].style.height = "300px"
+    div[5].style.position = "relative"
+    div[5].style.marginTop = "20px"
+    div[5].style.marginLeft = "20px"
+    div[5].style.backgroundColor = "#d9d9d9"
+
+  </script>
+</body>
+</html>
