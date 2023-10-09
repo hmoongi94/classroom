@@ -231,8 +231,10 @@
         //   p[i].remove()
         // }
 
-        // // removeChild()        
-        p.parentNode.removeChild(p)
+        // // removeChild()   
+        for(i=0; i<p.length; i++){     
+        p[i].parentNode.removeChild(p[i])
+        }
 
         // p array를 복사해서 사용
         // pCopy.forEach((element) => {
