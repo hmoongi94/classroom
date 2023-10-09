@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin:0; padding:0; box-sizing: border-box;}
+    #root {
+      width: 100vw;
+      height: 100vh;
+      padding-top: 100px;
+      padding-left: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div></div>
+    <div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script>
+    div = document.getElementsByTagName("div")
+    // console.dir(div)
+    p = document.getElementsByTagName("p")
+    // console.dir(p)
+
+    // root
+    root = document.getElementById("root")
+    div[0].style.display = "flex"
+
+    // aimlab
+    div[1].style.width = "800px"
+    div[1].style.height = "800px"
+    div[1].style.backgroundColor = "#d9d9d9"
+    div[1].style.display = "flex"
+    div[1].style.flexWrap = "wrap"
+
+    let makePTag 
+    let div1_makePTag
+    let target 
+    // console.dir(div[1])
+    // console.log(div[1].getBoundingClientRect())
+    // 100~800
+    console.log(Math.floor(Math.random() * (800-100) + 100))
+
+    target = function(){
+      makePTag = document.createElement("p")
+      div1_makePTag = div[1].appendChild(makePTag)
+      
+      for(i=p.length-1; i<p.length; i++){
+          p[i].style.width = "100px"
+          p[i].style.height = "100px"
+          p[i].style.borderRadius = "90px"
+          p[i].style.backgroundColor = "black"
+          p[i].style.position = "absolute"
+          // 랜덤함수로 좌료찍기
+            let x = Math.floor(Math.random() * (700-100) + 100);
+            let y = Math.floor(Math.random() * (700-100) + 100);
+            let xString = x.toString();
+            let yString = y.toString();
+          p[i].style.top = xString + "px"
+          p[i].style.left = yString + "px"
+      
+        }
+    }
+    
+    // console.dir(div[3])
+    let score = 0 
+
+    div[1].addEventListener("click",function(){
+      for(i=0; i<p.length; i++){
+        if(event.target === p[i]){
+          score = score +1
+            div[4].children[0].textContent = "점수:" +score  
+            p[i].remove()
+          }
+        }
+      })
+   
+      // let play = setInterval(function(){
+      //   target();
+      // },1000)
+
+    // let removeTarget
+    // removeTarget = function(){
+    //   for(i=0; i<p.length; i++){
+    //     p[i].addEventListener("click",function(){
+    //       console.dir(event)
+    //       if(event.target === p[i]){
+    //       p[i].remove()}
+    //     })
+    //   }
+    // }
+
+    // removeTarget()
+    // p[0].remove()
+    
+
+    
+
+
+    // 오른쪽 점수판 및 시작버튼
+    div[2].display = "flex"
+    div[2].style.position = "relative"
+    div[2].style.top = "300px"
+    
+
+    div[3].style.width = "300px"
+    div[3].style.height = "70px"
+    div[3].style.display = "flex"
+    div[3].style.justifyContent = "center"
+    div[3].style.alignItems = "center"
+    div[3].style.position = "relative"
+    div[3].style.marginTop = "20px"
+    div[3].style.marginLeft = "20px"
+    div[3].style.backgroundColor = "#d9d9d9"
+    
+
+    let h3 = document.getElementsByTagName("h3")
+    div[3].appendChild(document.createElement("h3"))
+    
+    // h3[0].textContent = "제한시간: 120초"
+    let time = 120000;
+    let min = 2;
+    let sec = 60;
+    
+    h3[0].textContent = "제한시간: " + min + ":00"
+    function timeCount(){
+      playTime =  setInterval(function(){
+        time = time - 1000;
+        min = time/(60*1000);
+
+      if(sec>0){
+        sec= sec-1;
+        h3[0].textContent = Math.floor(min)+ ":" + sec;
+      }
+      if(sec===0){
+        sec=60;
+        h3[0].textContent=Math.floor(min)+ ":" + "00"
+      }
+      },1000)
+    }
+
+
+    div[4].style.width = "300px"
+    div[4].style.height = "70px"
+    div[4].style.position = "relative"
+    div[4].style.display = "flex"
+    div[4].style.justifyContent = "center"
+    div[4].style.alignItems = "center"
+    div[4].style.marginTop = "20px"
+    div[4].style.marginLeft = "20px"
+    div[4].style.backgroundColor = "#d9d9d9"
+    div[4].appendChild(document.createElement("h3"))
+    h3[1].textContent = "점수:"
+
+    div[5].style.width = "300px"
+    div[5].style.height = "300px"
+    div[5].style.display = "flex"
+    div[5].style.justifyContent = "center"
+    div[5].style.alignItems = "center"
+    div[5].style.position = "relative"
+    div[5].style.marginTop = "20px"
+    div[5].style.marginLeft = "20px"
+    div[5].style.backgroundColor = "#d9d9d9"
+    div[5].appendChild(document.createElement("button"))
+    let button = document.getElementsByTagName("button")
+    button[0].style.width = "100px"
+    button[0].style.height = "100px"
+    button[0].style.backgroundColor = "pink"
+    button[0].textContent = "Play!"
+
+    let play
+    let rePlay
+    let timer
+   
+    button[0].addEventListener("click",function(){
+      if(button[0].textContent==="Play!"){
+        button[0].textContent = "Stop!"
+        time = 120000;
+        min = 2;
+        sec = 60;
+        h3[0].textContent = "제한시간: " + min + ":00"
+        h3[1].textContent = "점수:"
+        score = 0
+
+        play = setInterval(function(){
+        target();  
+        setTimeout(function(){
+          target();
+        },500)  
+        // 10초 이후에 꺼지기
+        timer = setTimeout(function(){
+          clearInterval(play)
+          button[0].textContent = "Play!"
+        },120000)
+        },1000)
+
+      // 제한시간 2분
+      timeCount();
+        setTimeout(function(){
+          clearInterval(playTime)
+        },120000)  
+      } 
+
+      else if(button[0].textContent === "Stop!"){
+        // 버튼 누르면 꺼지기
+        button[0].textContent = "Play!"
+        // 제한시간
+        clearInterval(play)
+        clearInterval(timer)
+        time = 120000;
+        min = 2;
+        sec = 60;
+        h3[0].textContent = "제한시간: " + min + ":00"
+        clearInterval(playTime)
+        // 점수
+        h3[1].textContent = "점수:"
+        score = 0
+        // 타겟 초기화
+        
+        // // remove()
+        // for(i=0; i<p.length; i++){
+        //   p[i].remove()
+        // }
+
+        // // removeChild()        
+        p.parentNode.removeChild(p)
+
+        // p array를 복사해서 사용
+        // pCopy.forEach((element) => {
+        //   // DOM에서 제거
+        //   element.parentNode.removeChild(element);
+        // });
+        
+      }
+    })
+    
+   
+
+  </script>
+</body>
+</html>
