@@ -1,9 +1,12 @@
 const pokemonOne = {
-  name: "피카츄"
+  name: "피카츄",
   pokemonOne: function(){
+    console.log(this)
     console.log(this.name)
   }
 }
+
+pokemonOne.pokemonOne()
 
 /**
  * pokemonOne이라는 객체 리터럴에는 두개의 프로퍼티(property)가 존재한다.
