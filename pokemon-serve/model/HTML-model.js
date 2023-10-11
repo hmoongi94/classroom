@@ -19,7 +19,7 @@ const HTMLTemplate = `
 <body>
   <h1>Pokemon List</h1>
   <ul>
-    ${setMakeLiTagPokemonList(_pokemonKoreaName)}
+    ${setMakeLiTagPokemonList(_pokemonKoreaName, "li")}
   </ul>
 </body>
 </html>
@@ -28,6 +28,6 @@ const HTMLTemplate = `
 // 정상적으로 조립되었는지 확인 
 // HTML을 제작하는 것이긴 하나, html로 해석되기전에는 단순 문자열 조합일 뿐이다.
 // server가 html로 해석해서 보여줄 것이다.
-// console.log(HTMLTemplate);
+console.log(HTMLTemplate);
 
 module.exports = HTMLTemplate;
