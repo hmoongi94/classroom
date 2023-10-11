@@ -1,9 +1,9 @@
 // 포켓몬스터 한글 배열을 HTML li 태그로 만들어주는 함수
-function setMakeLiTagPokemonList(pokemonKoreaName) {
+function setMakeLiTagPokemonList(pokemonKoreaName, tagName) {
   if (Array.isArray(pokemonKoreaName) === true) {
     let arrayLiTagPokemonList = [];
     for (let i = 0; i < pokemonKoreaName.length; i++) {
-      arrayLiTagPokemonList.push(`<li>${pokemonKoreaName[i]}</li>`);
+      arrayLiTagPokemonList.push(`<${tagName}>${pokemonKoreaName[i]}</${tagName}>`);
     }
     return arrayLiTagPokemonList.join("");
   } else {
