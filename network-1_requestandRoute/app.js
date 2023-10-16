@@ -21,5 +21,21 @@ const server = http.createServer((req,res)=> {
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.end(data)
     });
-  } 
+  } else if(req.url === '/js/index.js'&& req.method === 'GET'){
+    fs.redFile('./static/js/index.js', 'uft-8', (err,data)=>{
+      if(err){
+        serverErrorLog();
+      }
+      res.writeHead(200, {'Content-Type':'application/javascript'})
+      res.end(data);
+    })
+  } else{
+    res.writeHead(404);
+    res.end('Not Found')
+  }
+})
+
+const PORT = 3000;
+server.listen(PORT,()=>{
+  console.log(`cli 창에서 컨트롤 누른 후 옆에 포트 누르면 편리하게 확인 -> http://localhost:${PORT}/`)
 })
