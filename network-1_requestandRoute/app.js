@@ -14,7 +14,7 @@ const server = http.createServer((req,res)=> {
   // 1. 요청 URL
   // 2. 요청 메서드
   if(req.url === '/' && req.method === 'GET'){
-    fs.readFile('./static/index.html', 'utf-8', (err,data)=>{
+    fs.readFile('./static/index.html', 'utf8', (err,data)=>{
       if(err){
         serverErrorLog();
       }
@@ -22,7 +22,7 @@ const server = http.createServer((req,res)=> {
       res.end(data)
     });
   } else if(req.url === '/js/index.js'&& req.method === 'GET'){
-    fs.readFile('./static/js/index.js', 'uft-8', (err,data)=>{
+    fs.readFile('./static/js/index.js', 'uft8', (err,data)=>{
       if(err){
         serverErrorLog();
       }
