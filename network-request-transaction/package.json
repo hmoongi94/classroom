@@ -1,0 +1,20 @@
+{
+  "name": "kdt-iaas-http-request-transaction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDT-IaaS-Class-One-Group/KDT-IaaS-HTTP-request-transaction.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KDT-IaaS-Class-One-Group/KDT-IaaS-HTTP-request-transaction/issues"
+  },
+  "homepage": "https://github.com/KDT-IaaS-Class-One-Group/KDT-IaaS-HTTP-request-transaction#readme"
+}
