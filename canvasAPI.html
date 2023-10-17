@@ -6,10 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    #myCanvas{
+    body{
+      width: 100vw;
+      height: 100vh;
+    }
+    /* #myCanvas{
       width: 400px;
       height: 400px;
-    }
+    } */
   </style>
 </head>
 <body>
@@ -18,31 +22,31 @@
   <script>
     const canvas = document.getElementById("myCanvas")
     const ctx = canvas.getContext("2d") //일부 영역을 지정하는 방식?
+    console.dir(ctx)
 
     let x = 200;
     let y = 0;
     let speed = 2;
     // 초기화 값
 
-    console.dir(ctx)
     function draw(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
-
+      
+      ctx.fillStyle = "blue"
+      ctx.fillRect(x,y,50,50)
+      ctx.strokeStyle= "rgb(0,255,0)"
+      ctx.strokeRect(x,y,50,50)
+      ctx.linewidth = 50
       // ctx.fillStyle = "orange"
-      // ctx.fillRect(0,50,400,25)
+      // ctx.fillRect(0,0,200,100)
 
       // ctx.fillStyle = "rgb(255, 0, 0)";
       // ctx.fillRect(50, 50, 100, 150);
 
       // ctx.fillStyle = "rgb(0, 255, 0)";
       // ctx.fillRect(75, 75, 100, 100);
-
-      ctx.fillStyle = "blue"
-      ctx.fillRect(x,y,50,50)
-      ctx.strokeStyle= "rgb(0,255,0)"
-      ctx.strokeRect(x,y,50,50)
       // 그리기 방식
-
+      
       if(y+50<375){
         y+=speed
       }
@@ -50,7 +54,21 @@
       // browser refresh rate에 맞춘다.
       // setTimeout(draw, 16.7)
     }
-    draw();
+    // draw();
+
+    function degToRad(degrees) {
+    return (degrees * Math.PI) / 180;
+    }
+
+    ctx.fillStyle = "rgb(255, 0, 0)";
+    ctx.beginPath();
+    ctx.moveTo(50, 50);
+
+    ctx.lineTo(150, 50);
+    const triHeight = 50 * Math.tan(degToRad(60));
+    ctx.lineTo(100, 50 + triHeight);
+    ctx.lineTo(50, 50);
+    ctx.fill();
 
   </script>
 
