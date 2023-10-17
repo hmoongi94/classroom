@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #myCanvas{
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas"></canvas>
+  
+  <script>
+    const canvas = document.getElementById("myCanvas")
+    const ctx = canvas.getContext("2d") //일부 영역을 지정하는 방식?
+
+    let x = 200;
+    let y = 0;
+    let speed = 2;
+    // 초기화 값
+
+    console.dir(ctx)
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      ctx.fillStyle = "color"
+      ctx.fillRect(0,375,400,25)
+
+      ctx.fillStyle = "color"
+      ctx.fillRect(x,y,50,50)
+      // 그리기 방식
+
+      if(y+50<375){
+        y+=speed
+      }
+      requestAnimationFrame(draw);
+      // browser refresh rate에 맞춘다.
+      // setTimeout(draw, 16.7)
+    }
+    draw();
+
+  </script>
+
+</body>
+</html>
