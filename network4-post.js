@@ -17,6 +17,7 @@ http.createServer((req,res)=>{
       // toString()을 사용하지 않으면,
       // 버퍼(buffer) 데이터를 문자열로 변환하지 않고 그대로 둔다.
       // += -> body.concat(chunk).toString 변환가능?
+      // const ParsedBody = Buffer.concat(body).toString
     })
 
     req.on('end', ()=>{
