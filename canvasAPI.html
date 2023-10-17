@@ -28,11 +28,19 @@
     function draw(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
 
-      ctx.fillStyle = "color"
-      ctx.fillRect(0,375,400,25)
+      // ctx.fillStyle = "orange"
+      // ctx.fillRect(0,50,400,25)
 
-      ctx.fillStyle = "color"
+      // ctx.fillStyle = "rgb(255, 0, 0)";
+      // ctx.fillRect(50, 50, 100, 150);
+
+      // ctx.fillStyle = "rgb(0, 255, 0)";
+      // ctx.fillRect(75, 75, 100, 100);
+
+      ctx.fillStyle = "blue"
       ctx.fillRect(x,y,50,50)
+      ctx.strokeStyle= "rgb(0,255,0)"
+      ctx.strokeRect(x,y,50,50)
       // 그리기 방식
 
       if(y+50<375){
