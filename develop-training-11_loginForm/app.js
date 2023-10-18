@@ -40,11 +40,11 @@ const server = http.createServer((req, res) => {
         const { username, password1, password2, email } = parsedBody;
         if (err) {
           serverErrorLog();
-        } else if(typeof(username)==="string"){
+        } else if(password1 === password2 ){
           res.writeHead(200, { "Content-Type": "text/html" });
           res.end(data)
         } else{
-          res.writeHead(200, {"content-Type":"text/plain"})
+          res.writeHead(500, {"content-Type":"text/plain"})
           res.end("로그인정보가 틀렸습니다.")
         }
       })
