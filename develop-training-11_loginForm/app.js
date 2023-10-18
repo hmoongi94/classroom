@@ -34,15 +34,19 @@ const server = http.createServer((req, res) => {
     })
     
     req.on('end', () => {
-      const { username, password1, password2, email } = parsedBody;
-
+      const parsedBody = querystring.parse(body);
+      console.log(parsedBody)
       fs.readFile("./static/loginSuccess.html", "utf8", (err, data) => {
+        const { username, password1, password2, email } = parsedBody;
         if (err) {
           serverErrorLog();
-        } else {
+        } else if(typeof(username)==="string"){
           res.writeHead(200, { "Content-Type": "text/html" });
           res.end(data)
-        } 
+        } else{
+          res.writeHead(200, {"content-Type":"text/plain"})
+          res.end("로그인정보가 틀렸습니다.")
+        }
       })
     })
   } else {
