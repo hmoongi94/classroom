@@ -9,4 +9,4 @@ password1 = input[1].value
 password2 = input[2].value
 email = input[3].value
 
-module.exports = inputValue
+module.exports = jsonData
