@@ -1,6 +1,7 @@
 const signUpAsset = {
   id:"",
-  password:"",
+  password1:"",
+  password2:"",
   email:"",
   inputBoxColor:"#D9D9D9",
   textColor: "#B6B6B6",

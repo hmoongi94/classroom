@@ -1,12 +1,12 @@
-const jsonData = require("./signUpAssetModule.js")
+const signUpAsset = require("./signUpAssetModule.js")
+
+const jsonData = signUpAsset
 const input = document.getElementsByTagName("input")
-console.log(jsonData)
 
-const {username, password1, password2, email} = jsonData
+const {id, password1, password2, email} = jsonData
+jsonData.id = input[0].value
+jsonData.password1 = input[1].value
+jsonData.password2 = input[2].value
+jsonData.email = input[0].value
 
-username = input[0].value
-password1 = input[1].value
-password2 = input[2].value
-email = input[3].value
-
-console.log(jsonData)
+module.exports = jsonData
