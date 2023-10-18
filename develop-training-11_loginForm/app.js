@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 // 편리한 사용을 위해 url 내장 모듈을 사용했다.
 const url = require('url');
+const jsonData = require('./static/module/inputValue')
 
 
 const server = http.createServer((req, res) => {
@@ -20,7 +21,7 @@ const server = http.createServer((req, res) => {
 
 
   if (req.url === '/' && req.method === 'GET') {
-    fs.readFile('./loginForm.html', 'utf8', (err, data) => {
+    fs.readFile('./static/loginForm.html', 'utf8', (err, data) => {
       if (err) {
         serverErrorLog();
       }
@@ -28,7 +29,7 @@ const server = http.createServer((req, res) => {
       res.end(data);
     });
   } else if (req.url === '/loginForm.css' && req.method === 'GET') {
-    fs.readFile('./loginForm.css', 'utf8', (err, data) => {
+    fs.readFile('./static/loginForm.css', 'utf8', (err, data) => {
       if (err) {
         serverErrorLog();
       }
@@ -39,14 +40,12 @@ const server = http.createServer((req, res) => {
     // HTML 폼 태그 작성 부분에서 method="POST"로 지정하는 것으로 변경
     let body = '';
     const querystring = require('querystring');
-    const parsedBody = querystring.parse(body); //요청 본문을 파싱
-    const { username, password1, password2, email } = parsedBody;
     // 몸통이라는 임의의 변수에 담는다. 'POST' 요청은 본문이라는 것이 존재하기 때문에 
     // body라는 변수에 데이터를 '담아둔다'라고 표현한다.
     // 해당 body 변수는 'POST' 요청이 들어올때마다 초기화 된다.
     // 따라서 if()안에서만 사용할 수 있다.
     // if()기준 body 변수는 지역변수이다.
-
+    
     req.on('data', (chunk) => {
       body += chunk.toString(); //데이터를 문자열로 변환
       // toString()을 사용하지 않으면,
@@ -54,19 +53,21 @@ const server = http.createServer((req, res) => {
       // += -> body.concat(chunk).toString 변환가능?
       // const ParsedBody = Buffer.concat(body).toString
     })
-
+    
     req.on('end', () => {
       // console.log(`form 입력으로부터 받은 데이터 확인 ->`, parsedBody)
       // console.log(`form 입력으로부터 받은 데이터 확인 ->`, username)
       // console.log(`form 입력으로부터 받은 데이터 확인 ->`, password)
       // console.log(`form 입력으로부터 받은 데이터 확인 ->`, email)
+      const parsedBody = querystring.parse(body); //요청 본문을 파싱
+      const { username, password1, password2, email } = parsedBody;
 
-      fs.readFile("./loginSuccess.html", "utf8", (err, data) => {
+      fs.readFile("./static/loginSuccess.html", "utf8", (err, data) => {
         if (err) {
           serverErrorLog();
         } else {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.end(data)
+          res.writeHead(200, { "Content-Type": "text/html" });
+          res.end(data)
         } 
         // else {
         //   res.writeHead(200, { "Content-Type": "text/plain"})
