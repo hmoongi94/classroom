@@ -1,6 +1,6 @@
 const jsonData = require("./signUpAssetModule.js")
 const input = document.getElementsByTagName("input")
-// console.log(jsonData)
+console.log(jsonData)
 
 const {username, password1, password2, email} = jsonData
 
@@ -9,5 +9,4 @@ password1 = input[1].value
 password2 = input[2].value
 email = input[3].value
 
-module.exports = jsonData
-
+console.log(jsonData)
