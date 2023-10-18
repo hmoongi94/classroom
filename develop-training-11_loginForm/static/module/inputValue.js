@@ -10,3 +10,4 @@ password2 = input[2].value
 email = input[3].value
 
 module.exports = jsonData
+
