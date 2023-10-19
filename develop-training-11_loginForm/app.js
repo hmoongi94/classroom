@@ -31,6 +31,9 @@ const server = http.createServer((req, res) => {
     
     req.on('data', (chunk) => {
       body += chunk.toString(); //데이터를 문자열로 변환
+      console.log(chunk)
+      console.log(body)
+      
     })
     
     req.on('end', () => {
