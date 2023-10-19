@@ -59,6 +59,7 @@ const server = http.createServer((req, res) => {
       console.log(parsedBody.username)
       // console.log(loginSuccess)
       const { username, password1, password2, email } = parsedBody;
+      if(password1===password2){
       res.writeHead(200, {"Content-Type": "text/html"})
       res.end(`<!DOCTYPE html><html lang="en">
       <head>
@@ -69,14 +70,16 @@ const server = http.createServer((req, res) => {
         <link rel="stylesheet" href="./loginForm.css">
       </head>
       <body>
-        <h1></h1>
-        <script>
-          document.getElementsByTagName("h1")
-          h1[0].textContent = "님! 접속을 환영합니다. 편지를 제게 보내주세요!"
-        </script>
+        <h1>${parsedBody.username}님! 접속을 환영합니다. 저에게 편지를 보내주세요!</h1>
+        
       </body>
       </html>`)
+    } else {
+      res.end("login Fail!")
+    }
+
     })
+  
 
   } else {
     res.writeHead(404);
