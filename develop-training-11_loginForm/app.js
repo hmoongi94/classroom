@@ -25,6 +25,14 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/css' });
       res.end(data);
     });
+  } else if(req.url === '/loginForm.js' && req.method === 'GET'){
+    fs.readFile('./static/module/signUpAssetModule.js', 'utf8', (err,data)=>{
+      if (err) {
+        serverErrorLog();
+      }
+      res.writeHead(200, {'Content-Type': 'application/javascript'})
+      res.end(data)
+    })
   } else if (req.method === 'POST' && req.url === '/login') {
     let body = '';
     const querystring = require('querystring');
@@ -48,7 +56,7 @@ const server = http.createServer((req, res) => {
           res.end(data)
         } else{
           res.writeHead(500, {"content-Type":"text/plain"})
-          res.end("로그인정보가 틀렸습니다.")
+          res.end("login fail!")
         }
       })
     })
