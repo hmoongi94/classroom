@@ -121,7 +121,6 @@ const server = http.createServer((req, res) => {
       const parsedBody = querystring.parse(body);
       console.log(parsedBody)
       // loginSuccess = require("./loginSuccess.js")
-      console.log(parsedBody.username)
       // console.log(loginSuccess)
       const { title, text } = parsedBody;
       if (title === text) {
@@ -137,7 +136,7 @@ const server = http.createServer((req, res) => {
       <body>
         <div id="root">
       
-          <h1>편지를 보냈습니다!</h1>
+          <h1>${parsedBody.title} 편지를 보냈습니다!</h1>
          
         </div>
       </body>

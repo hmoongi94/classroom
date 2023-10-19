@@ -1,4 +1,4 @@
-const loginSuccess = function(){`<!DOCTYPE html>
+const loginSuccess = function(title){`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,7 @@ const loginSuccess = function(){`<!DOCTYPE html>
   <h1></h1>
   <script>
     document.getElementsByTagName("h1")
-    h1[0].textContent = "${parsedBody.username}님! 접속을 환영합니다. 편지를 제게 보내주세요!"
+    h1[0].textContent = " ${title} 님! 접속을 환영합니다. 편지를 제게 보내주세요!"
   </script>
 </body>
 </html>`

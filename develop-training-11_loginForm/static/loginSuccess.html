@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./loginForm.css"/>
-  <!-- <link rel="stylesheet" href="./loginSuccess.css"> -->
+  <link rel="stylesheet" href="./loginSuccess.css"> 
   <style>
     #root>form>input{
       width:20vw;
@@ -24,8 +24,8 @@
 
     <h1>${parsedBody.username}님! 접속을 환영합니다. 저에게 편지를 보내주세요!</h1>
     <form action="/send" method="POST">
-      Title <br> <input type="text" name="title"><br>
-      Text  <br> <input type="text" name="text"><br><br>
+      Title <br> <input type="text" name="title" placeholder="제목을 입력하세요"><br>
+      Text  <br> <input type="text" name="text" placeholder="내용을 입력하세요"><br><br>
       <input type="submit" value="send">
     </form>
 
