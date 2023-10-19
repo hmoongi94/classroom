@@ -25,25 +25,34 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/css' });
       res.end(data);
     });
-  } else if(req.url === '/loginForm.js' && req.method === 'GET'){
-    fs.readFile('./static/module/signUpAssetModule.js', 'utf8', (err,data)=>{
+  } else if (req.url === '/loginForm.js' && req.method === 'GET') {
+    fs.readFile('./static/module/signUpAssetModule.js', 'utf8', (err, data) => {
       if (err) {
         serverErrorLog();
       }
-      res.writeHead(200, {'Content-Type': 'application/javascript'})
+      res.writeHead(200, { 'Content-Type': 'application/javascript' })
+      res.end(data)
+    })
+  } else if (req.url === '/loginSuccess.js' && req.method === 'GET') {
+    fs.readFile('./static/module/loginSuccess.js', 'utf8', (err, data) => {
+      if (err) {
+        serverErrorLog();
+      }
+      res.writeHead(200, { 'Content-Type': 'application/javascript' })
       res.end(data)
     })
   } else if (req.method === 'POST' && req.url === '/login') {
     let body = '';
     const querystring = require('querystring');
-    
+    // const signUpAsset = require('./static/module/signUpAssetModule.js')
+
     req.on('data', (chunk) => {
       body += chunk.toString(); //데이터를 문자열로 변환
       console.log(chunk)
       console.log(body)
-      
+
     })
-    
+
     req.on('end', () => {
       const parsedBody = querystring.parse(body);
       console.log(parsedBody)
@@ -51,11 +60,11 @@ const server = http.createServer((req, res) => {
         const { username, password1, password2, email } = parsedBody;
         if (err) {
           serverErrorLog();
-        } else if(password1 === password2 ){
+        } else if (password1 === password2) {
           res.writeHead(200, { "Content-Type": "text/html" });
           res.end(data)
-        } else{
-          res.writeHead(500, {"content-Type":"text/plain"})
+        } else {
+          res.writeHead(500, { "content-Type": "text/plain" })
           res.end("login fail!")
         }
       })
