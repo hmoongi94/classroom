@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
+// const loginSuccess = require('./static/module/loginSuccess');
 
 
 const server = http.createServer((req, res) => {
@@ -33,14 +34,14 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'application/javascript' })
       res.end(data)
     })
-  } else if (req.url === '/loginSuccess.js' && req.method === 'GET') {
-    fs.readFile('./static/module/loginSuccess.js', 'utf8', (err, data) => {
-      if (err) {
-        serverErrorLog();
-      }
-      res.writeHead(200, { 'Content-Type': 'application/javascript' })
-      res.end(data)
-    })
+  // } else if (req.url === '/loginSuccess.js' && req.method === 'GET') {
+  //   fs.readFile('./static/module/loginSuccess.js', 'utf8', (err, data) => {
+  //     if (err) {
+  //       serverErrorLog();
+  //     }
+  //     res.writeHead(200, { 'Content-Type': 'application/javascript' })
+  //     res.end(data)
+  //   })
   } else if (req.method === 'POST' && req.url === '/login') {
     let body = '';
     const querystring = require('querystring');
@@ -48,27 +49,35 @@ const server = http.createServer((req, res) => {
 
     req.on('data', (chunk) => {
       body += chunk.toString(); //데이터를 문자열로 변환
-      console.log(chunk)
-      console.log(body)
-
+      // console.log(chunk)
+      // console.log(body)
     })
-
     req.on('end', () => {
       const parsedBody = querystring.parse(body);
       console.log(parsedBody)
-      fs.readFile("./static/loginSuccess.html", "utf8", (err, data) => {
-        const { username, password1, password2, email } = parsedBody;
-        if (err) {
-          serverErrorLog();
-        } else if (password1 === password2) {
-          res.writeHead(200, { "Content-Type": "text/html" });
-          res.end(data)
-        } else {
-          res.writeHead(500, { "content-Type": "text/plain" })
-          res.end("login fail!")
-        }
-      })
+      // loginSuccess = require("./loginSuccess.js")
+      console.log(parsedBody.username)
+      // console.log(loginSuccess)
+      const { username, password1, password2, email } = parsedBody;
+      res.writeHead(200, {"Content-Type": "text/html"})
+      res.end(`<!DOCTYPE html><html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./loginForm.css">
+      </head>
+      <body>
+        <h1></h1>
+        <script>
+          document.getElementsByTagName("h1")
+          h1[0].textContent = "님! 접속을 환영합니다. 편지를 제게 보내주세요!"
+        </script>
+      </body>
+      </html>`)
     })
+
   } else {
     res.writeHead(404);
     res.end('Not Found');

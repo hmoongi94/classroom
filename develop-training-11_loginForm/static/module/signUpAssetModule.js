@@ -31,4 +31,4 @@ input[4].addEventListener("click",function(){
   // console.log(signUpAsset)
 })
 
-module.exports = signUpAsset
+// module.exports = signUpAsset
