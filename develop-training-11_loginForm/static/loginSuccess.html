@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,5 +13,28 @@
     document.getElementsByTagName("h1")
     h1[0].textContent = `${parsedBody.username}님! 접속을 환영합니다. 편지를 제게 보내주세요!`
   </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./loginForm.css"/>
+</head>
+<body>
+  <div id="root">
+    <h1>${parsedBody.username}님! 접속을 환영합니다. 저에게 편지를 보내주세요!</h1>
+    <form action="/login" method="POST">
+      ID  <input type="text" name="username" placeholder="user name"><br>
+      Pw  <input type="password" name="password1" placeholder="password"><br>
+      Pw  <input type="password" name="password2" placeholder="password"><br>
+      Email  <input type="email" name="email" placeholder="email을 입력하시오"><br><br>
+      <input type="submit" value="login">
+      <!-- 제출(submit)을 진행했을 때 '요청(request)' 이벤트가 발생한다. -->
+    </form>
+  </div>
 </body>
 </html>
