@@ -26,6 +26,14 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/css' });
       res.end(data);
     });
+  } else if (req.url === '/loginSuccess.css' && req.method === 'GET') {
+    fs.readFile('./static/loginSyccess.css', 'utf8', (err, data) => {
+      if (err) {
+        serverErrorLog();
+      }
+      res.writeHead(200, { 'Content-Type': 'text/css' });
+      res.end(data);
+    });
   } else if (req.url === '/loginForm.js' && req.method === 'GET') {
     fs.readFile('./static/module/signUpAssetModule.js', 'utf8', (err, data) => {
       if (err) {
@@ -34,14 +42,14 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'application/javascript' })
       res.end(data)
     })
-  // } else if (req.url === '/loginSuccess.js' && req.method === 'GET') {
-  //   fs.readFile('./static/module/loginSuccess.js', 'utf8', (err, data) => {
-  //     if (err) {
-  //       serverErrorLog();
-  //     }
-  //     res.writeHead(200, { 'Content-Type': 'application/javascript' })
-  //     res.end(data)
-  //   })
+    // } else if (req.url === '/loginSuccess.js' && req.method === 'GET') {
+    //   fs.readFile('./static/module/loginSuccess.js', 'utf8', (err, data) => {
+    //     if (err) {
+    //       serverErrorLog();
+    //     }
+    //     res.writeHead(200, { 'Content-Type': 'application/javascript' })
+    //     res.end(data)
+    //   })
   } else if (req.method === 'POST' && req.url === '/login') {
     let body = '';
     const querystring = require('querystring');
@@ -59,27 +67,87 @@ const server = http.createServer((req, res) => {
       console.log(parsedBody.username)
       // console.log(loginSuccess)
       const { username, password1, password2, email } = parsedBody;
-      if(password1===password2){
-      res.writeHead(200, {"Content-Type": "text/html"})
-      res.end(`<!DOCTYPE html><html lang="en">
+      if (password1 === password2) {
+        res.writeHead(200, { "Content-Type": "text/html" })
+        res.end(`<!DOCTYPE html>
+      <html lang="en">
       <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="./loginForm.css">
+        <link rel="stylesheet" href="./loginForm.css"/>
+        <style>
+        #root>form>input{
+          width:20vw;
+        }
+        #root>form>input:nth-child(2){
+          height:3vw;
+        }
+        #root>form>input:nth-child(5){
+          height: 30vw;
+        }
+       </style>
       </head>
       <body>
-        <h1>${parsedBody.username}님! 접속을 환영합니다. 저에게 편지를 보내주세요!</h1>
-        
+        <div id="root">
+      
+          <h1>${parsedBody.username}님! 접속을 환영합니다. 저에게 편지를 보내주세요!</h1>
+          <form action="/send" method="POST">
+            Title  <br> <input type="text" name="title"><br>
+            Text  <br> <input type="text" name="text"><br><br>
+            <input type="submit" value="send">
+          </form>
+      
+        </div>
       </body>
       </html>`)
-    } else {
-      res.end("login Fail!")
-    }
+      } else {
+        res.end("login Fail!")
+      }
 
     })
-  
+
+  } else if (req.method === 'POST' && req.url === '/send') {
+    let body = '';
+    const querystring = require('querystring');
+    // const signUpAsset = require('./static/module/signUpAssetModule.js')
+
+    req.on('data', (chunk) => {
+      body += chunk.toString(); //데이터를 문자열로 변환
+      // console.log(chunk)
+      // console.log(body)
+    })
+    req.on('end', () => {
+      const parsedBody = querystring.parse(body);
+      console.log(parsedBody)
+      // loginSuccess = require("./loginSuccess.js")
+      console.log(parsedBody.username)
+      // console.log(loginSuccess)
+      const { title, text } = parsedBody;
+      if (title === text) {
+        res.writeHead(200, { "Content-Type": "text/html" })
+        res.end(`<!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./loginForm.css"/>
+      </head>
+      <body>
+        <div id="root">
+      
+          <h1>편지를 보냈습니다!</h1>
+         
+        </div>
+      </body>
+      </html>`)
+      } else {
+        res.end("fail send letter")
+      }
+
+    })
+
 
   } else {
     res.writeHead(404);

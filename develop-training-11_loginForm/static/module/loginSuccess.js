@@ -1,4 +1,4 @@
-const loginSuccess = `<!DOCTYPE html>
+const loginSuccess = function(){`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,5 +15,6 @@ const loginSuccess = `<!DOCTYPE html>
   </script>
 </body>
 </html>`
+}
 
 module.exports = loginSuccess
