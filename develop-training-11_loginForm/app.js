@@ -69,7 +69,7 @@ const server = http.createServer((req, res) => {
       console.log(parsedBody.username)
       // console.log(loginSuccess)
       const { username, password1, password2, email } = parsedBody;
-      if (password1 === password2) {
+      if (password1 === password2 && username !== "" && email !== "") {
         res.writeHead(200, { "Content-Type": "text/html" })
         res.end(loginSuccesshtml(parsedBody.username))
       } else {
@@ -95,7 +95,7 @@ const server = http.createServer((req, res) => {
       // loginSuccess = require("./loginSuccess.js")
       // console.log(loginSuccess)
       const { title, text } = parsedBody;
-      if (title === text) {
+      if (title !== "" && text !=="") {
         res.writeHead(200, { "Content-Type": "text/html" })
         res.end(successLetter(parsedBody.title))
       } else {
