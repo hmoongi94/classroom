@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
+const loginSuccess = require('./static/module/successLetter');
 // const loginSuccess = require('./static/module/loginSuccess');
 
 
@@ -62,6 +63,7 @@ const server = http.createServer((req, res) => {
     })
     req.on('end', () => {
       const parsedBody = querystring.parse(body);
+      const loginSuccesshtml = require("./static/module/loginSuccess.js")
       console.log(parsedBody)
       // loginSuccess = require("./loginSuccess.js")
       console.log(parsedBody.username)
@@ -69,38 +71,7 @@ const server = http.createServer((req, res) => {
       const { username, password1, password2, email } = parsedBody;
       if (password1 === password2) {
         res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(`<!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="./loginForm.css"/>
-        <style>
-        #root>form>input{
-          width:20vw;
-        }
-        #root>form>input:nth-child(2){
-          height:3vw;
-        }
-        #root>form>input:nth-child(5){
-          height: 30vw;
-        }
-       </style>
-      </head>
-      <body>
-        <div id="root">
-      
-          <h1>${parsedBody.username}님! 접속을 환영합니다. 저에게 편지를 보내주세요!</h1>
-          <form action="/send" method="POST">
-            Title  <br> <input type="text" name="title"><br>
-            Text  <br> <input type="text" name="text"><br><br>
-            <input type="submit" value="send">
-          </form>
-      
-        </div>
-      </body>
-      </html>`)
+        res.end(loginSuccesshtml(parsedBody.username))
       } else {
         res.end("login Fail!")
       }
@@ -120,27 +91,13 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
       const parsedBody = querystring.parse(body);
       console.log(parsedBody)
+      const successLetter = require("./static/module/successLetter.js")
       // loginSuccess = require("./loginSuccess.js")
       // console.log(loginSuccess)
       const { title, text } = parsedBody;
       if (title === text) {
         res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(`<!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="./loginForm.css"/>
-      </head>
-      <body>
-        <div id="root">
-      
-          <h1>${parsedBody.title} 편지를 보냈습니다!</h1>
-         
-        </div>
-      </body>
-      </html>`)
+        res.end(successLetter(parsedBody.title))
       } else {
         res.end("fail send letter")
       }

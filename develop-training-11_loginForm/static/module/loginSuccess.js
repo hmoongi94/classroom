@@ -1,4 +1,6 @@
-const loginSuccess = function(title){`<!DOCTYPE html>
+const loginSuccesshtml = function(username){
+  
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,13 +10,16 @@ const loginSuccess = function(title){`<!DOCTYPE html>
   <link rel="stylesheet" href="./loginForm.css">
 </head>
 <body>
-  <h1></h1>
-  <script>
-    document.getElementsByTagName("h1")
-    h1[0].textContent = " ${title} 님! 접속을 환영합니다. 편지를 제게 보내주세요!"
-  </script>
+  <h1>${username}편지를 보냈습니다!</h1>
+
+  <form action="/send" method="POST">
+      Title  <br> <input type="text" name="title"><br>
+      Text  <br> <input type="text" name="text"><br><br>
+      <input type="submit" value="send">
+  </form>
 </body>
 </html>`
+
 }
 
-module.exports = loginSuccess
+module.exports = loginSuccesshtml
