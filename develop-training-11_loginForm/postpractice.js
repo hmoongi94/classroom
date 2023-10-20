@@ -64,12 +64,13 @@ const server = http.createServer((req, res) => {
     const querystring = require('querystring');
     // const signUpAsset = require('./static/module/signUpAssetModule.js')
 
-    req.on('data', (chunk) => {
-      body += chunk.toString(); //데이터를 문자열로 변환
-      // console.log(chunk)
-      // console.log(body)
-    })
+    // req.on('data', (chunk) => {
+    //   body += chunk.toString(); //데이터를 문자열로 변환
+    //   // console.log(chunk)
+    //   // console.log(body)
+    // })
     req.on('end', () => {
+      body += chunk.toString();
       parsedBody1 = querystring.parse(body);
       const loginSuccesshtml = require("./static/module/loginSuccess.js")
       console.log(parsedBody1)
