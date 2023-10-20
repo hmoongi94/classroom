@@ -4,7 +4,10 @@ const url = require('url');
 let parsedBody1
 let parsedBody2
 // const loginSuccess = require('./static/module/loginSuccess');
-
+fs.readFile('./static/loginSuccess.css', 'utf-8', (err,data)=>{
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end(data)
+})
 
 const server = http.createServer((req, res) => {
   function serverErrorLog() {
