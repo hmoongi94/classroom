@@ -1,9 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
-let parsedBody
-// let parsedBody1
-// let parsedBody2
+let parsedBody1
+let parsedBody2
 // const loginSuccess = require('./static/module/loginSuccess');
 
 const server = http.createServer((req, res) => {
@@ -71,16 +70,16 @@ const server = http.createServer((req, res) => {
       // console.log(body)
     })
     req.on('end', () => {
-      parsedBody = querystring.parse(body);
+      parsedBody1 = querystring.parse(body);
       const loginSuccesshtml = require("./static/module/loginSuccess.js")
-      console.log(parsedBody)
+      console.log(parsedBody1)
       // loginSuccess = require("./loginSuccess.js")
-      console.log(parsedBody.username)
+      console.log(parsedBody1.username)
       // console.log(loginSuccess)
-      const { username, password1, password2, email } = parsedBody;
+      const { username, password1, password2, email } = parsedBody1;
       if (password1 === password2 && username !== "" && email !== "") {
         res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(loginSuccesshtml(parsedBody.username))
+        res.end(loginSuccesshtml(parsedBody1.username))
       } else {
         res.end("login Fail!")
       }
@@ -98,15 +97,15 @@ const server = http.createServer((req, res) => {
       // console.log(body)
     })
     req.on('end', () => {
-      parsedBody = querystring.parse(body);
-      console.log(parsedBody)
+      parsedBody2 = querystring.parse(body);
+      console.log(parsedBody2)
       const successLetter = require("./static/module/successLetter.js")
       // loginSuccess = require("./loginSuccess.js")
       // console.log(loginSuccess)
-      const { title, text } = parsedBody;
+      const { title, text } = parsedBody2;
       if (title !== "" && text !=="") {
         res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(successLetter(parsedBody.username,parsedBody.title))
+        res.end(successLetter(parsedBody1.username,parsedBody2.title))
       } else {
         res.end("fail send letter")
       }
