@@ -1,8 +1,9 @@
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
-let parsedBody1
-let parsedBody2
+let parsedBody
+// let parsedBody1
+// let parsedBody2
 // const loginSuccess = require('./static/module/loginSuccess');
 
 const server = http.createServer((req, res) => {
@@ -64,23 +65,22 @@ const server = http.createServer((req, res) => {
     const querystring = require('querystring');
     // const signUpAsset = require('./static/module/signUpAssetModule.js')
 
-    // req.on('data', (chunk) => {
-    //   body += chunk.toString(); //데이터를 문자열로 변환
-    //   // console.log(chunk)
-    //   // console.log(body)
-    // })
+    req.on('data', (chunk) => {
+      body += chunk.toString(); //데이터를 문자열로 변환
+      // console.log(chunk)
+      // console.log(body)
+    })
     req.on('end', () => {
-      body += chunk.toString();
-      parsedBody1 = querystring.parse(body);
+      parsedBody = querystring.parse(body);
       const loginSuccesshtml = require("./static/module/loginSuccess.js")
-      console.log(parsedBody1)
+      console.log(parsedBody)
       // loginSuccess = require("./loginSuccess.js")
-      console.log(parsedBody1.username)
+      console.log(parsedBody.username)
       // console.log(loginSuccess)
-      const { username, password1, password2, email } = parsedBody1;
+      const { username, password1, password2, email } = parsedBody;
       if (password1 === password2 && username !== "" && email !== "") {
         res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(loginSuccesshtml(parsedBody1.username))
+        res.end(loginSuccesshtml(parsedBody.username))
       } else {
         res.end("login Fail!")
       }
@@ -98,15 +98,15 @@ const server = http.createServer((req, res) => {
       // console.log(body)
     })
     req.on('end', () => {
-      parsedBody2 = querystring.parse(body);
-      console.log(parsedBody2)
+      parsedBody = querystring.parse(body);
+      console.log(parsedBody)
       const successLetter = require("./static/module/successLetter.js")
       // loginSuccess = require("./loginSuccess.js")
       // console.log(loginSuccess)
-      const { title, text } = parsedBody2;
+      const { title, text } = parsedBody;
       if (title !== "" && text !=="") {
         res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(successLetter(parsedBody1.username,parsedBody2.title))
+        res.end(successLetter(parsedBody.username,parsedBody.title))
       } else {
         res.end("fail send letter")
       }
