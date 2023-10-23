@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3 id="price-status">입력을 기다리는 중...</h3>
+  <input type = "text" id="price-input" placeholder="값을 작성해주세요">
+  <script>
+    
+      const priceInput = document.getElementById("price-input")
+      const priceStatus = document.getElementById("price-status")
+    
+    // 그다지 큰 의미는 없는 함수이지만, 호출을 하면 할 수록
+    // 함수의 효율성이 매우 중요해진다는 것을 알려준다.
+    function textInsert(targetElement, text){
+      targetElement.textContent = text
+    }
+
+    priceInput.addEventListener("input",function(){
+      // 지역변수 세개를 선언했다.
+      // 이벤트를 시작할 때 아래의 두개가 주요한 열쇠가 될 것을
+      // 억양을 달리해서 표현했다.
+      let isCondition = isNaN(priceInput.value);
+      let inputValueLength = priceInput.value.length;
+      let outputText = ["숫자를 입력해주세요", "값을 입력하셨습니다", "값을 입력해주세요."];
+
+      
+
+      if(inputValueLength > 0){
+        if(isCondition === true){
+          textInsert(priceStatus, outputText[0]);
+          return;
+        } else{
+          textInsert(priceStatus, outputText[1]);
+        }
+      } else{
+        textInsert(priceStatus, outputText[2])
+      }
+
+    })
+
+  </script>
+</body>
+</html>
