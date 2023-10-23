@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+    <h1 id="prompt-text"></h1>
+    <label for="color-value">tpye want color</label>
+    <input type="text" name="color-value" id="color-value">
+  
+
+    <script>
+      let view = window.document.body
+      console.dir(view)
+      let promptText = document.getElementById("prompt-text");
+      let colorValue = document.getElementById("color-value");
+      colorValue.addEventListener("change", function(){
+        promptText.textContent = colorValue.value
+        if(colorValue.value === "black"){
+          root.style.width = "100px"
+          root.style.height = "100px"
+          root.style.backgroundColor = "black"
+          window.document.body.children[1].textContent = null
+        }
+        else{
+          root.style.width = "100px"
+          root.style.height = "100px"
+          root.style.backgroundColor= "orange"
+          window.document.body.children[1].textContent = null
+        }
+      })
+    </script>
+  
+  
+</body>
+</html>
