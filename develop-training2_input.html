@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id ="root">
+    <form id="my-form">
+      <!-- id부분 -->
+      <label for="user-id">ID:</label>
+      <input type="text" id="user-id" name="user-id">
+      <!-- password부분 -->
+      <label for="user-password">Password:</label>
+      <input type="password" id="user-password" name="user-password">
+      <!-- 버튼부분 -->
+      <input type="button" value="Submit">
+    </form>
+  </div>
+
+  <script>
+    //  부모에 해당하는 form 태그를 식별자로 찾아서 form이라는 변수에 저장
+    let form = document.getElementById("my-form");
+    // form 태그에 이벤트 리스너를 등록하는 과정에서, click 이벤트가 발생하면 
+    // 매개변수 자리에 있는 이름없는 함수(익명함수)의 내부 실행 부분이 실행됨.
+    form.addEventListener("click",function(){
+      // form 태그 내부에 있는 input 태그 중에서 id가 user-id인 태그를 찾아서
+      // 그 태그의 value 속성값을 가져와서 userId라는 변수에 저장
+      // 낯설은 태그이므로, 객체의 속성값을 확인 후에 사용해야 한다.
+      let userId=document.getElementById("user-id").value;
+      let userPassword=document.getElementById("user-password").value;
+
+      console.log(`User ID: ${userId}`);
+      console.log(`Password: ${userPassword}`);
+    });
+  
+  </script>
+</body>
+</html>
