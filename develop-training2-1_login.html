@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id ="root">
+    <form id="my-form">
+      <!-- id부분 -->
+      <label for="user-id">ID:</label>
+      <input type="text" id="user-id" name="user-id">
+      <!-- password부분 -->
+      <label for="user-password">Password:</label>
+      <input type="password" id="user-password" name="user-password">
+      <!-- 버튼부분 -->
+      <input type="button" value="Submit">
+    </form>
+  </div>
+
+  <script>
+    // 임의의 객체에 ID와 패스워드를 저장
+    const userInfo = {
+      userId:"admin",
+      password: "1234"
+    };
+
+    // form 태그에 이벤트 리스너 추가
+    let form = document.getElementById("my-form");
+    form.addEventListener("click", function(e){
+      // 버튼 클릭 이벤트만 처리
+      if(e.target.type === "button"){
+        let userId = document.getElementById("user-id").value;
+        let password = document.getElementById("user-password").value;
+
+        if(userId===userInfo.userId && password=== userInfo.password){
+          console.log("일치합니다.");
+        }else{
+          console.log("불일치합니다.");
+        }
+      }
+    })
+
+
+  </script>
+  
+</body>
+</html>
