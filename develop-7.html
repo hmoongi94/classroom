@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="test"></h1>
+  <script>
+    // document.getElementsByTagName()
+    // document.getElementById()
+    // 와 같은 문서(DOM)에 작성된 문서관련 함수는
+    // javascript이긴 하지만, 정확히는 문서용 인터페이스이므로
+    // 문서에서 실행되는 상황이 아니면 전혀 구동되지 않습니다.
+    // 따라서 문서 관련한 함수인지 여부인지를 확인 한 후,
+    // 정확한 명세를 먼저 살펴보시는 것을 권합니다.
+    let one = document.getElementsByTagName('h1');
+    let two = document.getElementById("test");
+    // one="ㅎㅇ"
+    // two="ㅎㅇ2"
+    // 2개의 함수는 같은 <h1>을 식별하는 두가지 동일한 방식이지만
+    // 아래의 콘솔을 확인해보면, 전혀 다른 결과값(리턴, 반환값)입니다.
+    console.log(one)
+    console.log(two)
+  </script>
+  
+</body>
+</html>
