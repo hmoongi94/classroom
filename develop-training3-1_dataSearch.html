@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 id="output-data"></h1>
+  <label for="student-text">type student name:</label>
+  <input type="text" id="student-text" name="student-name" />
+  <input type="button" id="student-button" name="student-name" value="search!" />
+  <script>
+    // 기초 데이터배열
+    const studentList = ["ㅇㅇ"];
+    // output 부분
+    let outputData = document.getElementById("output-data")
+    let studentText = document.getElementById("student-text")
+    let studentButton = document.getElementById("student-button");
+
+    // click event
+    studentButton.addEventListener("click", function () {
+      console.log(studentText.value) //정상적으로 동작하는지 확인
+
+      for (let i = 0; i < studentList.length; i++) {
+        let checkCompare = studentText.value === studentList[i];
+        if (checkCompare) {
+          outputData.textContent = `${studentText.value}은 ${i + 1}번째에 있습니다.`;
+          break; // 참 조건이 실행되면 반복문을 종료한다.
+        } else {
+          outputData.textContent = `${studentText.value}은 없습니다.`;
+        }
+      }
+
+    })
+
+  </script>
+</body>
+
+</html>
