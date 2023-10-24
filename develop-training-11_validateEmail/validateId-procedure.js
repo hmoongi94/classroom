@@ -14,7 +14,19 @@ function validateId(Id){
     // 상당히 절차적이지만, 원리를 이해하기 위해 까다로운 조건식을 모두 작성했다.
     // 메서드로 처리하면 매우 간결해진다.
     if(id[i]=== id[i].toUpperCase()&&id[i]!==id[i].hasLowerCase()){
-      
+      state.hasUpperCase = true;
     }
+    if(id[i]=== id[i].toLowerCase()&&id[i]!==id[i].hasUpperCase()){
+      state.hasLowerCase = true;
+    }
+    if(state.hasLowerCase || state.hasUpperCase){
+      // 둘 중에 하나라도 true면 true를 반환
+      return true;
+    }    
   }
+
+  return false;
 }
+
+console.log(validateId("kongUkjae")) //true
+console.log(validateId(305)) //false
