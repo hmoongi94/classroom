@@ -17,7 +17,19 @@ const capsule={
   password: "305",
   email: "hmoongi94@gmail.com",
   getTotalDataString: function(){
+    // console.log(this)
     return `ID:${this.id}, Password:${this.password}, email:${this.email}`
   }
 }
 console.log(capsule.getTotalDataString())
+
+const capsule2={
+  id: "hong",
+  password: "305",
+  email: "hmoongi94@gmail.com",
+  getTotalDataString: ()=>{
+    // console.log(this)
+    return `ID:${this.id}, Password:${this.password}, email:${this.email}`
+  }
+}
+console.log(capsule2.getTotalDataString())
