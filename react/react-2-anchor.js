@@ -16,6 +16,7 @@ function component(elementNode, attributes, children){
       }
     })
   }
+  // 문자열인 경우에는 elementNode 태그의 innerHtml에 들어갈 문자가 들어감.
   // component함수를 부모태그안에 또 써서 자식태그를 부모태그와 같은 방법으로 만들어준다.
 
   elementStr += `<${elementNode}>`
@@ -38,4 +39,9 @@ window.addEventListener('hashchange',()=>{
   // if() 조건문의 패턴을 뒤로하고, switch문을 사용했다.
   // switch()문자체가 '일관된 조건식'을 뉘앙스로 설명하기 때문에
   // '모두 읽지 않아도' 어떤 작용을 해낸다는 것을 알게된다.
+
+  switch(hash){
+    case 'page1':
+      contentDiv.innerHTML = component('h1', {style:'color:blue'}, ["This is page 1"])
+  }
 })
