@@ -5,6 +5,8 @@ function component(elementNode, attributes, children){
     //attributes[key] -> key에 대한 value(값)을 가져옴
   }
   elementStr +='>';
+  // id, class값 같은 속성을 넣어주는 부모태그 만듬
+  
   if(children){
     children.forEach((child)=>{
       if(typeof child === 'string'){
@@ -14,6 +16,8 @@ function component(elementNode, attributes, children){
       }
     })
   }
+  // 자식 태그가
+
   elementStr += `<${elementNode}>`
   return elementStr;
 }
