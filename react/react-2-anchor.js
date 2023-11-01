@@ -16,7 +16,7 @@ function component(elementNode, attributes, children){
       }
     })
   }
-  // 자식 태그가
+  // component함수를 부모태그안에 또 써서 자식태그를 부모태그와 같은 방법으로 만들어준다.
 
   elementStr += `<${elementNode}>`
   return elementStr;
