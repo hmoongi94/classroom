@@ -33,5 +33,9 @@ window.addEventListener('hashchange',()=>{
   // <a>태그의 href 속성에는 #page1, #page2, #page3, #page4가 있다.
   const hash = window.location.hash.substr(1);
 
-  
+  // if(hash === 'page1') {}
+  // else if(hash === 'page2'){}
+  // if() 조건문의 패턴을 뒤로하고, switch문을 사용했다.
+  // switch()문자체가 '일관된 조건식'을 뉘앙스로 설명하기 때문에
+  // '모두 읽지 않아도' 어떤 작용을 해낸다는 것을 알게된다.
 })
