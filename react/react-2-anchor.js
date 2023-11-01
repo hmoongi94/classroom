@@ -56,3 +56,10 @@ window.addEventListener('hashchange',()=>{
     
   }
 })
+
+// 초기 로딩을 위한 코드
+window.dispatchEvent(new Event('hashchange'));
+// 위의 addEventListener()는 window 객체에 이벤트 핸드러이고, 변화가 있을 때마다 이벤트가 발생한다.
+// 그러나, 초기 로딩 시에는 이벤트가 발생하지 않는다.
+// 따라서, 초기 로딩 시에도 이벤트가 발생하도록 하기 위해 dispatchEvent()를 사용한다.
+// dispatchEvent()는 지정된 이벤트를 생성하여, 이벤트를 발생시킨다.
