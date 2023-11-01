@@ -6,6 +6,14 @@ function component(elementNode, attributes, children){
   }
   elementStr +='>';
   if(children){
-    children
+    children.forEach((child)=>{
+      if(typeof child === 'string'){
+        elementStr += child;
+      } else {
+        elementStr += component(child.elementNode, child.attributes, child.children)
+      }
+    })
   }
+  elementStr += `<${elementNode}>`
+  return elementStr;
 }
