@@ -21,3 +21,9 @@ function component(elementNode, attributes, children){
   elementStr += `<${elementNode}>`
   return elementStr;
 }
+
+window.addEventListener('hashchange',()=>{
+  // haschchange 이벤트는 웹브라우저의 url 해시부분이 변경될 때 발생하는 이벤트이다.
+  const contentDiv = document.getElementById('root');
+
+})
