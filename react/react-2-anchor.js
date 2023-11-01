@@ -47,6 +47,12 @@ window.addEventListener('hashchange',()=>{
     case 'page2':
       contentDiv.innerHTML = component('div', {style: 'background-color: cadetblue;'}, [component('h1',{},['This is Page2'])]);
       break;
-    case
+    case 'page3':
+      contentDiv.innerHTML = component('div', {style: 'display:flex; justify-content-center; color:#ff2222;'},[component('h1',{},['This is Page3'])]);
+      break;
+    case 'page4':
+      contentDiv.innerHTML = component('div',{style:'display:flex; justify-content:center; color:#333;'}, [component('h1',{},['This is Page4'])])
+      break;
+    
   }
 })
