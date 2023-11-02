@@ -1,0 +1,13 @@
+{
+  "name": "esm",
+  "version": "1.0.0",
+  "description": "1. 일일히 파일 만드는 것을 에디터 우클릭 하는 것이 귀찮으므로",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC"
+}
