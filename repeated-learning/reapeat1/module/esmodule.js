@@ -10,7 +10,7 @@
  * * for()문을 '배열에서' 사용하게끔 추상화된 javascript 문법이다.
  */
 
- export default function(tagName, styleObject){
+ export function styleObjectPutinTag(tagName, styleObject){
   // DOM API 태그 요소를 아래의 element로 생성한다.
   const element = document.createElement(tagName)
   // Javascript에서 지원하는 keys()메서드를 활용해, 간편하게 배열로 가공한다.
@@ -22,6 +22,8 @@
   styleObjectKeyArray.forEach((key)=>{
     element.style[key] = styleObject[key];
   })
-  
+
+  element.textContent = "ㅎㅇㅎㅇ"
+
   return element
  }
