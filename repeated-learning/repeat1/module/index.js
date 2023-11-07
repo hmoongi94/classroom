@@ -10,3 +10,5 @@ const styleObject = {
 }
 
 document.getElementById('root').appendChild(styleObjectPutinTag(tagName,styleObject))
+
+// console.log(styleObject.forEach())
