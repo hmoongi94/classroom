@@ -1,9 +1,11 @@
-// custom modules
-import diffLogic from './model/diff-logic.js'
-diffLogic()
-
 // built-in modules
 import fs from "fs"
+import path from "path"
+
+// custom modules
+import diffLogic from './model/diff-logic.mjs'
+diffLogic()
+
 
 // json files path
 const inputJSONPath = "./data/fromDB-data.json"

@@ -4,11 +4,27 @@
  * @returns Object
  */
 
+import fs from "fs"
+import path from "path"
+
 export default function (inputJSONPath, outputJSONPath) {
-  if (!inputJSONPath.endswith('.json') || !outputJSONPath.endswith('.json')) {
+  if (!inputJSONPath.endsWith('.json') || !outputJSONPath.endsWith('.json')) {
     throw new Error(`매개변수 ${inputJSONPath}, ${outputJSONPath}는 json 파일이 아닙니다.`)
+  } else {
+    let result = {}
+
+    // inputJSONData 객체로 가져오기
+    const inputJSONData = JSON.parse(fs.readFileSync(path.join(__dirname, `${inputJSONPath}`), 'utf-8'))
+    console.log(inputJSONData)
+
+    const outputJSONData = JSON.parse(fs.readFileSync(path.join(__dirname, `${outputJSONPath}`) , 'utf-8'))
+    console.log(outputJSONData)
+
+    return result
   }
-  let result = {}
+}
+  
+
 
   /**
    * ? Q. JSON 파일을 아래의 5,6번에 해당하는 로직 작성 후 JSON으로 저장
@@ -23,7 +39,3 @@ export default function (inputJSONPath, outputJSONPath) {
    * * 7. 리턴을 통해 결과값을 전달
    */
 
-
-  return result
-  console.log('diff-logic');
-}
