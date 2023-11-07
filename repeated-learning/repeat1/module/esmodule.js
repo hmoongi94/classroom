@@ -21,6 +21,7 @@
   // 개발자들은 이러한 것을 '인자를 전달한다'고 표현한다.
   styleObjectKeyArray.forEach((key)=>{
     element.style[key] = styleObject[key];
+    //style[key]는 속성값을 나타냄
   })
 
   element.textContent = "ㅎㅇㅎㅇ"

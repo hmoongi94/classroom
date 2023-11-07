@@ -9,6 +9,8 @@ const styleObject = {
   "list-style":"none"
 }
 
+console.log(styleObject["color"])
+
 document.getElementById('root').appendChild(styleObjectPutinTag(tagName,styleObject))
 
 // console.log(styleObject.forEach())
