@@ -3,7 +3,7 @@ import fs from "fs"
 import path from "path"
 
 // custom modules
-import diffLogic from './model/diff-logic.mjs'
+import {diffLogic} from './model/diff-logic.js'
 diffLogic()
 
 
