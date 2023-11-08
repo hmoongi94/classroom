@@ -1,11 +1,7 @@
-// const test = '/asfdsajlfkaf/data.json'
+const fs = require('fs')
+const path = require('path')
 
-// console.log(test.endsWith('.json'))
-
-import fs from "fs"
-import path from "path"
-
-function test(inputJSONPath, outputJSONPath) {
+function diffLogic(inputJSONPath, outputJSONPath) {
   if (!inputJSONPath.endsWith('.json') || !outputJSONPath.endsWith('.json')) {
     throw new Error(`매개변수 ${inputJSONPath}, ${outputJSONPath}는 json 파일이 아닙니다.`)
   } else {
@@ -22,4 +18,10 @@ function test(inputJSONPath, outputJSONPath) {
   }
 }
 
-test("ddafasf.json","dasfsafds.json")
+const inputJSONPath = './data/fromDB-data.json'
+const outputJSONPath = './data/differences.json'
+
+diffLogic(inputJSONPath,outputJSONPath)
+
+// package.json에 type:module을 하면
+// require를 쓸 때 확장자를 cjs로 바꿔줘야한다.?
