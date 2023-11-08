@@ -13,12 +13,16 @@ export function diffLogic(inputJSONPath, outputJSONPath) {
   } else {
     let result = {}
 
-    // inputJSONData 객체로 가져오기
-    const inputJSONData = JSON.parse(fs.readFileSync(path.join(__dirname, `${inputJSONPath}`), 'utf-8'))
+    // 1. 두 개의 JSON파일을 읽은 뒤 JSON 객체로 반환
+    const inputJSONData = JSON.parse(fs.readFileSync(path.join( `${inputJSONPath}`), 'utf-8'))
     console.log(inputJSONData)
 
-    const outputJSONData = JSON.parse(fs.readFileSync(path.join(__dirname, `${outputJSONPath}`) , 'utf-8'))
+    const outputJSONData = JSON.parse(fs.readFileSync(path.join( `${outputJSONPath}`) , 'utf-8'))
     console.log(outputJSONData)
+
+    // 2. inputJSONdata의 데이터 value를 비교
+    
+
 
     return result
   }
