@@ -6,22 +6,67 @@
 
 import fs from "fs"
 import path from "path"
-import { CompareValueWord } from "./comparevalue.mjs"
+import {ObjectExtractKey, CompareValueWord, ArrayPushArray} from "./comparevalue.mjs"
 
-export function diffLogic(inputJSONPath, outputJSONPath) {
+function diffLogic(inputJSONPath, outputJSONPath) {
   if (!inputJSONPath.endsWith('.json') || !outputJSONPath.endsWith('.json')) {
     throw new Error(`매개변수 ${inputJSONPath}, ${outputJSONPath}는 json 파일이 아닙니다.`)
   } else {
 
-    // 1. 두 개의 JSON파일을 읽은 뒤 JSON 객체로 반환
+    //* 1. 두 개의 JSON파일을 읽은 뒤 JSON 객체로 반환
     const inputJSONData = JSON.parse(fs.readFileSync(path.join( `${inputJSONPath}`), 'utf-8'))
-    console.log(inputJSONData)
+    // console.log(inputJSONData)
 
     const outputJSONData = JSON.parse(fs.readFileSync(path.join( `${outputJSONPath}`) , 'utf-8'))
-    console.log(outputJSONData)
+    // console.log(outputJSONData)
 
+    //* 2. inputdata객체의 key값을 뽑아줌.
+    const inputDataKey = ObjectExtractKey(inputJSONData)
+    // console.log(inputDataKey) [ 'operator' , 'operand']
+    //* key값을 확인을 확인하고 Object[key]를 사용해 value값을 구했다.
+    const value1 = inputJSONData["operator"]
+    const value2 = inputJSONData["operand"]
+
+    //* 공통단어는 outputdata객체에 접근해 samewords에 집어넣어준다. 다른단어는 differencewords에 집어넣는다.
+    const commonWord = CompareValueWord(value1, value2).common
+    const differenceWord = CompareValueWord(value1, value2).different
+
+    const outputDataKey = ObjectExtractKey(outputJSONData)
+    // console.log(outputDataKey) 
+    // [ 'sameWords', 'differenceWords' ]
+
+    //* concat()을 사용하면 원래 있던 배열에 추가되는 것이 아니라 추가된 추가한 배열을 새롭게 지정해야된다.
+    //* 그래서 배열을 하나하나 push해주는 함수를 만들었다.
+    //* 처음 outJSONData 배열을 바꾸고 싶었기 때문.
+    ArrayPushArray(outputJSONData['sameWords'], commonWord)
+    ArrayPushArray(outputJSONData['differenceWords'], differenceWord)
+
+    //* 새롭게 변수지정을 안해줘도 되지만 가독성을 위해 변수지정.
+    const newData = outputJSONData
+    
+    // *처음 outputJSONData배열에 잘 추가되는 것을 확인.
+    // console.log(outputJSONData)
+    // console.log(newData)
+
+    //*outputJSONData를 .json데이터에 fs.writefile을 사용해 추가로 써준다.
+
+    
+  
+
+    
+    
+    
+    
+    
   }
 }
+
+
+const inputJSONPath = '../data/fromDB-data.json'
+const outputJSONPath = '../data/differences.json'
+diffLogic(inputJSONPath,outputJSONPath)
+
+
 
   /**
    * ? Q. JSON 파일을 아래의 5,6번에 해당하는 로직 작성 후 JSON으로 저장
