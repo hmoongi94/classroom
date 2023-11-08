@@ -6,7 +6,7 @@
 
 import fs from "fs"
 import path from "path"
-import {ObjectExtractKey, CompareValueWord, ArrayPushArray} from "./comparevalue.mjs"
+import { ObjectExtractKey, CompareValueWord, ArrayPushArray } from "./comparevalue.mjs"
 
 function diffLogic(inputJSONPath, outputJSONPath) {
   if (!inputJSONPath.endsWith('.json') || !outputJSONPath.endsWith('.json')) {
@@ -14,10 +14,10 @@ function diffLogic(inputJSONPath, outputJSONPath) {
   } else {
 
     //* 1. 두 개의 JSON파일을 읽은 뒤 JSON 객체로 반환
-    const inputJSONData = JSON.parse(fs.readFileSync(path.join( `${inputJSONPath}`), 'utf-8'))
+    const inputJSONData = JSON.parse(fs.readFileSync(path.join(`${inputJSONPath}`), 'utf-8'))
     // console.log(inputJSONData)
 
-    const outputJSONData = JSON.parse(fs.readFileSync(path.join( `${outputJSONPath}`) , 'utf-8'))
+    const outputJSONData = JSON.parse(fs.readFileSync(path.join(`${outputJSONPath}`), 'utf-8'))
     // console.log(outputJSONData)
 
     //* 2. inputdata객체의 key값을 뽑아줌.
@@ -41,43 +41,45 @@ function diffLogic(inputJSONPath, outputJSONPath) {
     ArrayPushArray(outputJSONData['sameWords'], commonWord)
     ArrayPushArray(outputJSONData['differenceWords'], differenceWord)
 
-    //* 새롭게 변수지정을 안해줘도 되지만 가독성을 위해 변수지정.
+    //* outputJSONData 문자열로 파싱
     const newData = outputJSONData
-    
+
     // *처음 outputJSONData배열에 잘 추가되는 것을 확인.
     // console.log(outputJSONData)
-    // console.log(newData)
 
     //*outputJSONData를 .json데이터에 fs.writefile을 사용해 추가로 써준다.
 
-    
-  
+    const updatedData = JSON.stringify(outputJSONData, null, 2)
 
-    
-    
-    
-    
-    
+    // 변경된 JSON 데이터를 파일에 씁니다.
+    fs.writeFile(outputJSONPath, updatedData, 'utf8', (err) => {
+      if (err) {
+        console.error('파일 쓰기 오류:', err);
+      } else {
+        console.log('JSON 파일이 성공적으로 갱신되었습니다.');
+      }
+    });
+
   }
 }
 
 
 const inputJSONPath = '../data/fromDB-data.json'
 const outputJSONPath = '../data/differences.json'
-diffLogic(inputJSONPath,outputJSONPath)
+diffLogic(inputJSONPath, outputJSONPath)
 
 
 
-  /**
-   * ? Q. JSON 파일을 아래의 5,6번에 해당하는 로직 작성 후 JSON으로 저장
-   * ? Q. 저장이 완료되면 초기화된 result에 객체를 리턴
-   * 
-   * * 1. inputJSONdata, outputJSONdata를 읽어서 JSON 객체로 변환
-   * * 2. inputJSONdata, outputJSONdata의 value를 비교
-   * * 3. outputJSONpath 매개변수의 key에 해당하는 정보를 저장
-   * * 4. difereences.json 파일에 필요한 상태값
-   * * 5. 같은 단어가 무엇인지 저장
-   * * 6. 다른 단어가 무엇인지 저장
-   * * 7. 리턴을 통해 결과값을 전달
-   */
+/**
+ * ? Q. JSON 파일을 아래의 5,6번에 해당하는 로직 작성 후 JSON으로 저장
+ * ? Q. 저장이 완료되면 초기화된 result에 객체를 리턴
+ * 
+ * * 1. inputJSONdata, outputJSONdata를 읽어서 JSON 객체로 변환
+ * * 2. inputJSONdata, outputJSONdata의 value를 비교
+ * * 3. outputJSONpath 매개변수의 key에 해당하는 정보를 저장
+ * * 4. difereences.json 파일에 필요한 상태값
+ * * 5. 같은 단어가 무엇인지 저장
+ * * 6. 다른 단어가 무엇인지 저장
+ * * 7. 리턴을 통해 결과값을 전달
+ */
 
