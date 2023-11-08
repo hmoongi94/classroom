@@ -9,11 +9,14 @@ const testObject = {
 
 function ObjectCompareValue(object){
 
+  let result = []
   for(const key in object){
     const value = object[key]
-    console.log(value)
+
+    result.push(value)
   }
 
+  console.log(result)
 }
 
 ObjectCompareValue(testObject)
