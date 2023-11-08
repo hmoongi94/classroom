@@ -7,16 +7,15 @@ const testObject = {
   key3: "세 번째 키에 대한 value"
 }
 
-function ObjectCompareValue(object){
+function ObjectExtractValue(object){
 
-  let result = []
+  let objectKey = []
   for(const key in object){
     const value = object[key]
 
-    result.push(value)
+    objectKey.push(value)
   }
-
-  console.log(result)
+  console.log(objectKey)
 }
 
-ObjectCompareValue(testObject)
+ObjectExtractValue(testObject)
