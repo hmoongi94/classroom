@@ -26,12 +26,14 @@ function convertToIntegers(obj) {
       if (valueAsInteger.toString() !== obj[key]) {
         // .toString() -> 문자열로 변환 parseInt를 했을 때 타입이 number로 바뀌었으므로 문자열로 변환해서 비교해준다.
         // parseInt를 했기 떄문에 2.5는 2로 바뀌어서 값이 틀리게 됨.
+        // throw는 catch문으로 넘겨버린다.
         throw new Error(`${obj[key]}은(는) 정수로 정확하게 변환될 수 있습니다.`)
         // 위 Error를 발생시키면, catch구문으로 실행이 넘어간다.
       }
       // if() 조건식은 falsy(실패스러운) 원하는 값이 아닌 경우에만 실행됩니다.
       // 즉, valueAsInteger가 NaN이 아닌 경우에만 실행됩니다.
       result[key] = valueAsInteger;
+
     } catch (error) {
       // 변환 중 에러가 발생하면 여기서 처리합니다.
       console.log(`"${key}" 속성 처리 중 오류 발생: ${error.message}`)
