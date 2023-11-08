@@ -8,7 +8,7 @@ import fs from "fs"
 import path from "path"
 import { ObjectExtractKey, CompareValueWord, ArrayPushArray } from "./comparevalue.mjs"
 
-function diffLogic(inputJSONPath, outputJSONPath) {
+export function diffLogic(inputJSONPath, outputJSONPath) {
   if (!inputJSONPath.endsWith('.json') || !outputJSONPath.endsWith('.json')) {
     throw new Error(`매개변수 ${inputJSONPath}, ${outputJSONPath}는 json 파일이 아닙니다.`)
   } else {
@@ -64,9 +64,9 @@ function diffLogic(inputJSONPath, outputJSONPath) {
 }
 
 
-const inputJSONPath = '../data/fromDB-data.json'
-const outputJSONPath = '../data/differences.json'
-diffLogic(inputJSONPath, outputJSONPath)
+// const inputJSONPath = '../data/fromDB-data.json'
+// const outputJSONPath = '../data/differences.json'
+// diffLogic(inputJSONPath, outputJSONPath)
 
 
 
