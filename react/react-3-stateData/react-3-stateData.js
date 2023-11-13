@@ -1,4 +1,4 @@
-export function load() {
+export function load(){
   document.addEventListener("DOMContentLoaded", function () {
 
     /**
@@ -27,7 +27,7 @@ export function load() {
      * 예제에서 말하는 매개변수는 h1을 의미한다.
      */
 
-    function undateUI(domElement) {
+    function updateUI(domElement) {
       // 선택된 domElement의 textContent를 stateData.basicTitle로 변경한다.
       domElement.textContent = stateData.basicTitle
     }
@@ -42,13 +42,13 @@ export function load() {
     }
 
     //최초한번(최초 접속 혹은 GET요청)을 위해 한번은 실행시킨다.
-    undateUI(h1);
+    updateUI(h1);
     button.addEventListener("click", function () {
       //button을 클릭하면 stateData에 마련된 함수가 '연결되어' 동작하여 결국에는
       //h1 데이터는 새로운 값으로 전환된다.
       updateTitle(stateData.newTitle)
     })
 
-    
+
   })
 }
