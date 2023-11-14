@@ -73,3 +73,21 @@ class TitleManager {
 
 }
 
+const test = new TitleManager("h1", {basicTitle:"기본 제목", newTitle:"새로운 제목"}) 
+
+console.dir(test)
+
+/**
+ * 위 console.dir(test)의 결과
+ * _언더바(은닉화) 처리된 것으로 조회된다.
+ * 이것은 현재 개발자가 만든 것이기 때문에, 다른 외부에서 접근할 수 없다.
+ * 제작자 콘솔에서만 확인할 수 있다.
+ * Titlemanager{
+ * _tagName: 'h1'
+ * _stateData: { basicTitle: '기본제목', newTitle:"새로운 제목"}
+ * }
+ * 
+ */
+
+//은닉화 처리를 했음에도 아래의 코드는 getter를 통해 접근이 가능하다.
+console.log(test.tagName) // h1
