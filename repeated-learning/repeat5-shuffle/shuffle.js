@@ -26,3 +26,35 @@ function shuffleArray(array){
 
   return array; // 섞인 배열 반환
 }
+
+//학생 목록 섞기
+const shuffledArray = shuffleArray(studentList);
+
+/**
+ * 주어진 배열을 팀으로 나누는 함수
+ * @param {Array} array - 팀으로 나눌 배열
+ * @returns {Array} 팀으로 구성된 배열
+ */
+function createTeams(array){
+  // 배열을 먼저 섞음(위에 함수 선언에서)
+  const shuffled = shuffleArray(array)
+  const teamSize = 4 // 예제 편의상 리터럴로 설정 팀의 기본 크기 설정
+
+  // reduce 메서드를 사용하여 팀 생성
+  // 누산하는 배열을 빈 배열로 만들고, push 메서드를 사용하여 새 팀을 추가하므로, 
+  // 주의깊게 확인해볼 포커스
+  const teams = shuffled.reduce((acc,current,index)=>{
+    // 새 팀을 시작하거나 현재 팀에 학생 추가
+    if(index % teamSize === 0 && shuffled.length - index >= teamSize)
+    acc.push([]) // 새 팀 시작
+    //현재 팀에 학생 추가
+    acc[acc.length-1].push(current)
+    return acc // 팀 배열 반환
+
+    // 상수 teams는 마치 물이 적정선에 닿으면 다른 그릇에 덜어내는 것처럼 동작
+  },[])
+
+  //마지막 팀의 크기 조정
+
+
+}
