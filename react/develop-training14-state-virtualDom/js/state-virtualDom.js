@@ -46,8 +46,8 @@ export function load(){
     const container = document.getElementById('root')
     container.appendChild(render(virtualDom))
 
-
-
+    console.dir(container)
+    console.dir(virtualDom)
 
   })
 }
