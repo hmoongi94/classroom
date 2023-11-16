@@ -59,6 +59,8 @@ export function load() {
     const virtualDom = component(stateData)
     const container = document.getElementById('root')
     container.appendChild(render(virtualDom))
+    // console.dir(virtualDom)
+    // console.dir(render(virtualDom))
 
     // console.dir(container)
     // console.dir(virtualDom)
