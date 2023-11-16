@@ -36,9 +36,12 @@ export function load() {
         return document.createTextNode(virtualDom)
       }
       const element = document.createElement(virtualDom.type)
+      //*여기서 createElement는 dom의 함수이므로 virtualDom.type에 들어있는 데이터로 태그를 만듬.
       if (virtualDom.props) {
         for (const [key, value] of Object.entries(virtualDom.props)) {
+        //* Object.entries() 메소드를 사용해 virtualDom.props의 객체를 [key,value]쌍의 배열로 반환하고 그 배열들의 각 쌍을 for..of루프를 사용하여 처리한다.
           element.setAttribute(key, value)
+          //* element: DOM 요소에 속성으로 설정함
         }
       }
       for (let i = 0; i < virtualDom.children.length; i++) {
