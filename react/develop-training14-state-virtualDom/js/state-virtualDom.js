@@ -10,7 +10,8 @@ export function load() {
       return { type, props, children }
     }
 
-    //* 
+    //*  React에서의 createElement는 React 요소를 생성하는 데 사용되며, 가상 DOM(Virtual DOM)을 통해 더 효율적으로 UI를 업데이트할 수 있게 합니다.
+    //* React의 createElement 함수는 JSX(JavaScript XML) 문법에서 사용됩니다. JSX는 JavaScript의 확장 문법으로, XML과 유사한 문법을 사용하여 React 요소를 작성할 수 있게 해줍니다. JSX 코드는 Babel과 같은 트랜스파일러를 통해 일반 JavaScript 코드로 변환되어 실행됩니다.
     
 
     function component(stateData) {
