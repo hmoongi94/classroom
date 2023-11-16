@@ -17,7 +17,7 @@ export function load(){
       return createElement('div',{},menu,content)
     }
 
-    function rendor(virtualDom){
+    function render(virtualDom){
       if(typeof virtualDom === 'string'){
         return document.createTextNode(virtualDom)
       }
@@ -44,7 +44,7 @@ export function load(){
 
     const virtualDom = component(stateData)
     const container = document.getElementById('root')
-    container.appendChild(rendor(virtualDom))
+    container.appendChild(render(virtualDom))
 
 
 
