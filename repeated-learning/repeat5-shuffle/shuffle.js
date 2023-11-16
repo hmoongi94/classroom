@@ -55,6 +55,25 @@ function createTeams(array){
   },[])
 
   //마지막 팀의 크기 조정
+  //배열의 크기가 다른 경우 아래의 코드는 쓸모가 없어지는 안티패턴이긴하나, 
+  // while문으로 조건이 성립할 때까지 반복하는 점과
+  // unshift 메서드를 사용하여 배열의 맨 앞에 요소를 추가한다는 점
+  // pop메서드를 사용하여 배열의 맨 뒤에 요소를 제거하는 점을 연구할 포인트
+  const lastTeam = teams[teams.length-1]
+  if(lastTeam.length<5 && teams.length>1){
+    while(lastTeam.length<5){
+      lastTeam.unshift(teams[teams.length-2].pop()) // 이전 팀에서 학생이동
+    }
+  }
 
+  // 각 팀의 첫 번째 학생에게 '팀장-' 접두사 추가
+  teams.forEach((team)=>{
+    if(team.length>0){
+      team[0]='팀장-' + team[0]; //팀장 지정
+    }
+  })
+
+  return teams
+  // 완성된 팀 배열 반환
 
 }
