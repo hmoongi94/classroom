@@ -7,6 +7,7 @@ export function load() {
       // type: 엘리먼트의 타입을 나타내는 문자열 또는 React 컴포넌트입니다.
       // props: 엘리먼트의 속성을 나타내는 객체로, 생략 가능합니다.
       // children: 엘리먼트의 자식 요소를 나타내는 인자로, 생략 가능하며 여러 개의 인자를 받을 수 있습니다.
+      // ...은 나머지 매개변수로서 해당함수에 전달된 모든 나머지 인자들을 배열로 수집합니다.
       return { type, props, children }
     }
 
@@ -20,7 +21,7 @@ export function load() {
         const item = stateData[i]
         const menuItem = createElement('li', {}, createElement('a', { href: item.hash }, item.text))
         menuItems.push(menuItem)
-        console.log(menuItem)
+        // menuItems라는 배열에 sateData의 데이터값을 사용해 {type:'li', property:{}, children:{type:'a', property:{href:#data},children:data }} 값인 
       }
       console.log(menuItems)
       const menu = createElement('ul', {}, ...menuItems)
