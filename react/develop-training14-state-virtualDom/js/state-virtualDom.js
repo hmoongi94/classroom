@@ -35,6 +35,7 @@ export function load() {
 
     function render(virtualDom) {
       // console.log(virtualDom)
+      //* 처음 virtualDom은 객체기 때문에 typeof === 'string'은 의미가 없는 코드지만, virtualDom.children 안의 배열값들을 for문으로 검사할 때, render함수를 다시 쓰기 때문에 그 때 활용이 된다.
       if (typeof virtualDom === 'string') {
         // console.log(document.createTextNode(virtualDom))
         return document.createTextNode(virtualDom)
@@ -48,6 +49,8 @@ export function load() {
           //* element: DOM 요소에 속성으로 설정함
         }
       }
+      //* virtualDom.children의 배열값들을 하나하나 render함수를 다시 돌려준다.
+      //* children의 배열값이 string이면 값이 빠져나오고 객체값일 경우 type,props,children을 다시 값들을 element의 자식속성값으로 넣어준다.
       for (let i = 0; i < virtualDom.children.length; i++) {
         const child = virtualDom.children[i]
         element.appendChild(render(child))
