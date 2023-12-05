@@ -1,0 +1,15 @@
+{
+  "name": "typescriptfirst",
+  "version": "1.0.0",
+  "description": "typescript를 사용하기 위해서 패키지 초기화한다.\r 1. 전역설치\r `npm install -g --save typescript ts-node`로 설치하면 프로젝트 가릴 것 없이 시스템에서 동작하기 때문에 매우 편리하지만, 처음 사용하는 설치작업이므로, -g를 사용하지 않는\r 로컬(프로젝트)설치를 권장한다.\r 2. 로컬설치\r `npm install --save typescript ts-node`로 설치하면 프로젝트 내부에 설치되어 프로젝트 내부에서만 동작한다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
