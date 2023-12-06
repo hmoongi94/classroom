@@ -17,8 +17,8 @@ function functionB():string{
 
 function main():string{
   console.log('main 함수영역')
-  functionA()
-  functionB()
+  console.log(`return 값: ${functionA()}`)
+  console.log(`return 값: ${functionB()}`)
   return 'end'
 }
 

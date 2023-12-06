@@ -14,8 +14,8 @@ function functionB() {
 }
 function main() {
     console.log('main 함수영역');
-    functionA();
-    functionB();
+    console.log("return \uAC12: ".concat(functionA()));
+    console.log("return \uAC12: ".concat(functionB()));
     return 'end';
 }
 console.log(main());
