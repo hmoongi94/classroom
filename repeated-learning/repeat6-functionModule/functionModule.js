@@ -5,17 +5,25 @@ function loadFunction(name) {
 function functionA() {
     console.log('functionA 함수영역');
     loadFunction('functionA');
-    return 'functionA';
+    return 'functionA의 값';
 }
 function functionB() {
     console.log('functionB 함수영역');
     loadFunction('functionB');
-    return 'functionB';
+    return 'functionB의 값';
 }
+// function main():Object{
+//   console.log('main 함수영역')
+//   console.log(`return 값: ${functionA()}`)
+//   console.log(`return 값: ${functionB()}`)
+//   // return `main함수의 값: ${functionA()}`
+//   return [functionA(), functionB()]
+// }
 function main() {
     console.log('main 함수영역');
-    console.log("return \uAC12: ".concat(functionA()));
-    console.log("return \uAC12: ".concat(functionB()));
-    return 'end';
+    return {
+        functionA: functionA(),
+        functionB: functionB(),
+    };
 }
 console.log(main());
