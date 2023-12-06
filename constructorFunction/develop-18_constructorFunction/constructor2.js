@@ -1,5 +1,6 @@
 function makeObjectTwo(idValue, passwordValue, emailValue){
   // 함수를 '선언문' 방식, 기명함수 방식으로 바꾸었고, this 바인딩 능력을 활용해 제작했다.
+  console.log(this)
   this.id = idValue;
   this.password = passwordValue;
   this.email = emailValue;
