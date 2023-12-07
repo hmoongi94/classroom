@@ -1,4 +1,5 @@
 // 객체 배열 예시
+//* 객체 타입을 정의할 때 :object가 아닌 interface문법을 통해 그 객체의 속성?까지 정해줌
 /**
  * interface 문법을 통해 '어떤 객체'의 속성(property)과 타입(type)을 정의할 수 있습니다.
  * User라는 인터페이스를 따르는 객체는 id와 name 속성을 가져야 하고, id는 number타입, name은 string타입이어야만 하게끔
@@ -26,7 +27,7 @@ function jsonConvertObject(obj: User): User {
   return JSON.parse(JSON.stringify(obj));
 }
 
-// 얕은 복사
+//* 얕은 복사
 /**
  * 얕은 복사의 개념은 배열의 원소가 객체일 경우, 원소의 객체를 복사하지 않고 참조만 복사하는 것을 의미합니다.
  * 아래의 전개 연산자(spread operator)를 통해 객체를 복사하고 있지만, 객체의 속성이 객체일 경우, 참조만 복사하게 됩니다.
@@ -34,3 +35,5 @@ function jsonConvertObject(obj: User): User {
 const shallowCopiedUsers: User[] = users.map((user) => {
   return user;
 });
+
+//* 깊은 복사
