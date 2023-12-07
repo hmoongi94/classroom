@@ -37,3 +37,19 @@ const shallowCopiedUsers: User[] = users.map((user) => {
 });
 
 //* 깊은 복사
+/**
+ * JSON으로 저장한 후, 다시 불러오는 방식을 통해 깊은 복사를 구현할 수 있습니다.
+ * users 배열과 deepCopiedUsers 배열은 서로 완전히 다른 객체를 참조하고 있습니다.
+ */
+const deepCopiedUsers: User[] = users.map((user) => jsonConvertObject(user));
+
+//복사된 배열에서 객체 수정
+shallowCopiedUsers[0].name = "홍문기 미남"; //얕은 복사는 원본 배열도 수정됨.
+deepCopiedUsers[1].name = "홍현기 미남";
+
+//결과 출력
+console.groupCollapsed("객체 배열 예시");
+  console.log("원본배열:", users); //원본 배열
+  console.log("얕은복사 배열:", shallowCopiedUsers); //얕은복사 배열
+  console.log("깊은복사 배열:", deepCopiedUsers); //깊은복사 배열
+console.groupEnd();
