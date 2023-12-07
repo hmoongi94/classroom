@@ -48,6 +48,7 @@ class Component {
   }
 
   public static create(
+    //? public static 같이 사용???
     element: string,
     props: Props,
     children?: string[]
