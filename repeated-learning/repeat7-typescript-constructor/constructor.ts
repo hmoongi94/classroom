@@ -66,3 +66,11 @@ class Calculator {
 }
 
 //사용 예
+const calc = new Calculator(10,5)
+// console.dir(Calculator)
+
+//* 정적메서드로 새로운 매개변수를 받아서 사칙연산을 할 수 있고,
+//* 안에 public메서드는 클래스의 인스턴스를 생성할 때 받는 매개변수를 어떻게 할지 정한다?
+console.log(Calculator.addStatic(20,5))
+console.log(calc)
+console.log(calc.add())
