@@ -46,7 +46,7 @@ function createElement(tagName: string, props?:Props, ...children:string[]): str
   let startTag = `<${tagName}`
   if (props){
     for(let prop in props){
-      startTag += `${prop}="${props[prop]}"`
+      startTag += ` ${prop}="${props[prop]}"`
     }
   }
   startTag += '>';
@@ -57,7 +57,7 @@ function createElement(tagName: string, props?:Props, ...children:string[]): str
   elementStrings.push(...children)
 
   // 태그 종료 부분
-  elementStrings.push(`<${tagName}>`)
+  elementStrings.push(`</${tagName}>`)
 
   const result = elementStrings.join(''); // join 메서드 덕분에 배열은 하나의 문자열로 합쳐집니다.
   return result
@@ -65,5 +65,6 @@ function createElement(tagName: string, props?:Props, ...children:string[]): str
 
 //사용 예제
 let styleString = styleValueMaker('color:red', 'font-size:16px', 'padding:10px')
-let divString = createElement('div',{style: styleString}, '이것은 스타일이 적용된 div입니다.')
+console.log(styleString)
+let divString = createElement('div',{id: 1, style: styleString}, '이것은 스타일이 적용된 div입니다.')
 console.log(divString)

@@ -46,7 +46,7 @@ function createElement(tagName, props) {
     var startTag = "<".concat(tagName);
     if (props) {
         for (var prop in props) {
-            startTag += "".concat(prop, "=\"").concat(props[prop], "\"");
+            startTag += " ".concat(prop, "=\"").concat(props[prop], "\"");
         }
     }
     startTag += '>';
@@ -54,11 +54,12 @@ function createElement(tagName, props) {
     // 자식 요소들 추가
     elementStrings.push.apply(elementStrings, children);
     // 태그 종료 부분
-    elementStrings.push("<".concat(tagName, ">"));
+    elementStrings.push("</".concat(tagName, ">"));
     var result = elementStrings.join(''); // join 메서드 덕분에 배열은 하나의 문자열로 합쳐집니다.
     return result;
 }
 //사용 예제
 var styleString = styleValueMaker('color:red', 'font-size:16px', 'padding:10px');
-var divString = createElement('div', { style: styleString }, '이것은 스타일이 적용된 div입니다.');
+console.log(styleString);
+var divString = createElement('div', { id: 1, style: styleString }, '이것은 스타일이 적용된 div입니다.');
 console.log(divString);
