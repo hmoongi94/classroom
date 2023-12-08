@@ -66,5 +66,5 @@ function createElement(tagName: string, props?:Props, ...children:string[]): str
 //사용 예제
 let styleString = styleValueMaker('color:red', 'font-size:16px', 'padding:10px')
 console.log(styleString)
-let divString = createElement('div',{id: 1, style: styleString}, '이것은 스타일이 적용된 div입니다.')
+let divString = createElement('div',{id: 1, style: styleString}, ['이것은 스타일이 적용된 div입니다.','테스트 중'])
 console.log(divString)
