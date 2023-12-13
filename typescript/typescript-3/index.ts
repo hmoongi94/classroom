@@ -17,7 +17,8 @@ class Component {
     this.children = children;
   }
 
-  private styleToString(style: Partial<CSSStyleDeclaration>): string { //? Partial<CSSStyleDeclaration>은 string이라서 따로 string을 지정할 필요가 없지않나?
+  private styleToString(style: Partial<CSSStyleDeclaration>): string {
+    //? Partial<CSSStyleDeclaration>은 string이라서 따로 string을 지정할 필요가 없지않나?
     const entries = Object.entries(style);
     const objectValues = entries.map(([key, value]) => `${key}: ${value}`);
     return objectValues.join("");
@@ -55,7 +56,7 @@ class Component {
   ): string {
     const component = new Component(element, props, children);
     //* class component를 정의하는 스코프 안에서 component를 불러서 쓸 수 있다? -> 정적 메서드(static)은 인스턴스(new) 없이 사용할 수 있다.
-    //* 이렇게하면 클래스의 사용자는 `component.create`를 통해 인스턴스를 직접 생성하는 것이 아니라, 클래스에 대한 동작을 수행하게 된다. 
+    //* 이렇게하면 클래스의 사용자는 `component.create`를 통해 인스턴스를 직접 생성하는 것이 아니라, 클래스에 대한 동작을 수행하게 된다.
     //? 클래스 내부에서 new Component를 사용하여 인스턴스를 생성하는 것은 클래스 내부의 일반 메서드 또는 생성자에서만 가능하며, 외부에서는 생성된 인스턴스를 사용해야 합니다.
     return component.build();
   }
@@ -63,6 +64,10 @@ class Component {
 
 // 사용예시
 
-const myComponent = Component.create('div',{id:'example',style:{color: 'red'}}, ['이것은 자바인가 타스인가'])
-const root = document.getElementById('root')
-root.innerHTML = myComponent
+const myComponent = Component.create(
+  "div",
+  { id: "example", style: { color: "red" } },
+  ["이것은 자바인가 타스인가"]
+);
+const root = document.getElementById("root");
+root.innerHTML = myComponent;
