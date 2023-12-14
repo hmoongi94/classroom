@@ -18,6 +18,6 @@ console.log(Minam.sayHello()) // hello hongmoongi
 // chunamInstance 인스턴스에는 sayHello 메서드가 있으므로 사용이 가능하다.
 // 하지만 위 Minam 클래스의 sayHello는 new 키워드 없는, 즉 인스턴스를 따로 생성하지 않아도 사용이 가능하다.
 // 일반적인 인스턴스 생성은 다분히 동적인 방식이라고 할 수 있다.
-console.log(chunamInstance.sayHello())
-const chunamInstance = new Chunam();
 // console.log(chunamInstance.sayHello())
+const chunamInstance = new Chunam();
+console.log(chunamInstance.sayHello())
