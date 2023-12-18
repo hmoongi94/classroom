@@ -50,12 +50,12 @@ export const load = () => {
      * @param {string} text - 텍스트 내용.
      * @returns {Object} 텍스트를 가진 가상 DOM 요소.
      */
-    function createTextElementExample(text){
-      return{
+    function createTextElementExample(text) {
+      return {
         type: "TEXT_ELEMENT",//DOM API의 코어, 인터페이스인 Node(요소마디)의 타입
-        props:{
+        props: {
           nodeValue: text,
-          children:[],
+          children: [],
         }
       }
     }
@@ -66,28 +66,45 @@ export const load = () => {
      * @param {Object} virtualDOM - 렌더링할 가상 DOM.
      * @param {HTMLElement} container - 렌더링될 DOM 요소의 컨테이너
      */
-    function render(virtualDOM,container){
+    function render(virtualDOM, container) {
       let domElement
-      if(virtualDOM.type==="TEXT_ELEMENT"){
+      if (virtualDOM.type === "TEXT_ELEMENT") {
         domElement = document.createTextNode('')
-      } else{
+      } else {
         domElement = document.createElement(virtualDOM.type)
       }
 
       // 속성 설정
-      for(const key in virtualDOM.props){
-        if(key !== 'children'){
-          domElement[key]= virtualDOM.props[key]
+      for (const key in virtualDOM.props) {
+        if (key !== 'children') {
+          domElement[key] = virtualDOM.props[key]
         }
       }
 
       // 자식 요소들을 재귀적으로 렌더링
       // 자식 요소가 텍스트인 경우는 렌더링하지 않고, 텍스트 노드를 생성
-      virtualDOM.props.children.forEach(child=> render(child, domElement))
+      virtualDOM.props.children.forEach(child => render(child, domElement))
       container.appendChild(domElement)
     }
 
     // 애플리케이션의 루트 요소 생성
+    /**
+     * ? 거대한 React.js 라이브러리의 createElement 함수를 직접 풀어낸 코드이므로
+     * * 세부적인 접근은 약간 다를 수 있으나,
+     * * 기본적인 논리는 동일합니다.
+     * * 따라서 해당 코드를 이해하는 것은 React.js의 코어를 이해하는 매우 중요한 개념입니다.
+     */
+    const App = createElementExample(
+      'div',
+      { id: 'app' },
+      [
+        createElementExample('h1', null, ['virtual DOM!']),
+        createElementExample('p',null,['이것이 client-side rendering이다!'])
+      ]
+    )
+
+    // 가상 DOM 렌더링
+    render(App, document.getElementById('root'))
 
 
   })
