@@ -29,7 +29,23 @@ export const load = () => {
       }
 
       // 속성을 복사
-      
+      if(properties){
+        for(const key in properties){ //객체의 반복문 for-in
+          if(properties.hasOwnProperty(key)){
+            // 프로퍼티를 가지고있는지 검사하는 매우 편리한 메서드
+            props[key] = properties[key]
+          }
+        }
+      }
+
+      return{
+        type: type,
+        props: props,
+      }
     }
+
+    /**
+     * 
+     */
   })
 }
