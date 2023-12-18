@@ -62,6 +62,33 @@ export const load = () => {
 
     /**
      * render 함수는 가상 DOM을 실제 DOM으로 렌더링합니다.
+     * 
+     * @param {Object} virtualDOM - 렌더링할 가상 DOM.
+     * @param {HTMLElement} container - 렌더링될 DOM 요소의 컨테이너
      */
+    function render(virtualDOM,container){
+      let domElement
+      if(virtualDOM.type==="TEXT_ELEMENT"){
+        domElement = document.createTextNode('')
+      } else{
+        domElement = document.createElement(virtualDOM.type)
+      }
+
+      // 속성 설정
+      for(const key in virtualDOM.props){
+        if(key !== 'children'){
+          domElement[key]= virtualDOM.props[key]
+        }
+      }
+
+      // 자식 요소들을 재귀적으로 렌더링
+      // 자식 요소가 텍스트인 경우는 렌더링하지 않고, 텍스트 노드를 생성
+      virtualDOM.props.children.forEach(child=> render(child, domElement))
+      container.appendChild(domElement)
+    }
+
+    // 애플리케이션의 루트 요소 생성
+
+
   })
 }
