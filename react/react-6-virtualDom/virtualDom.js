@@ -13,39 +13,55 @@ export const load = () => {
      * @param {Array} children - 자식 요소들(문자열 또는 객체)
      * @returns {Object} 생성된 가상 DOM 요소
      */
-    function createElementExample(type, properties, children){
+    function createElementExample(type, properties, children) {
       // 자식 요소들을 가상 Dom 요소로 반환
       const props = {
-        children: children.map(child=>{
+        children: children.map(child => {
           // children 요소가 객체일때는 리턴하고, 아니면 다시 본 함수 호출(재귀함수)
           // 객체가 아닌경우 텍스트를 가진 가상 DOM 요소를 생성
           // 어려운 코드 테크닉이므로, 태그가 아닌 기본 형태를 가지고 연습하시기 바랍니다.
-          if(typeof child==='object'){
+          if (typeof child === 'object') {
             return child;
-          } else{
+          } else {
             return createTextElementExample(child)
           }
         })
       }
 
       // 속성을 복사
-      if(properties){
-        for(const key in properties){ //객체의 반복문 for-in
-          if(properties.hasOwnProperty(key)){
+      if (properties) {
+        for (const key in properties) { //객체의 반복문 for-in
+          if (properties.hasOwnProperty(key)) {
             // 프로퍼티를 가지고있는지 검사하는 매우 편리한 메서드
             props[key] = properties[key]
           }
         }
       }
 
-      return{
+      return {
         type: type,
         props: props,
       }
     }
 
     /**
+     * createTextElementExample 함수는 텍스트를 가진 가상 DOM 요소를 생성합니다.
      * 
+     * @param {string} text - 텍스트 내용.
+     * @returns {Object} 텍스트를 가진 가상 DOM 요소.
+     */
+    function createTextElementExample(text){
+      return{
+        type: "TEXT_ELEMENT",//DOM API의 코어, 인터페이스인 Node(요소마디)의 타입
+        props:{
+          nodeValue: text,
+          children:[],
+        }
+      }
+    }
+
+    /**
+     * render 함수는 가상 DOM을 실제 DOM으로 렌더링합니다.
      */
   })
 }
