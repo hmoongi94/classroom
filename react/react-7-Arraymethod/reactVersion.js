@@ -14,9 +14,9 @@ const PokemonList = () => {
     <div key={index}>
       <p>{pokemonName}</p>
     </div>
-    ))
+  ))
 
-    return <div>{pokemonElements}</div>
+  return <div>{pokemonElements}</div>
 }
 
 export default PokemonList
