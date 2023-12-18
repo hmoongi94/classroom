@@ -20,3 +20,10 @@ const PokemonList = () => {
 };
 
 export default PokemonList;
+
+// const pokemon = ['피카츄', '라이츄', '파이리', '꼬부기'];
+// const updatedPokemon = pokemon.map((pokemonName) => {
+//   return pokemonName
+// })
+
+// console.log(updatedPokemon)
