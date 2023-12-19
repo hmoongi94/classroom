@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div id="root"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
 
-  <!-- React 및 ReactDOM CDN 사용 -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- React 및 ReactDOM CDN 사용 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 
-  <!-- Babel CDN 사용 -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  
-  <script type="text/babel">
-    const { useState, useEffect } = React;
-  
-    const PokemonList = () => {
-      const pokemon = ['피카츄', '라이츄', '파이리', '꼬부기'];
-  
-      const updatedPokemon = pokemon.map((pokemonName) => {
-        if (pokemonName === '파이리') {
-          return '버터풀';
-        }
-        return pokemonName;
-      });
-  
-      const pokemonElements = updatedPokemon.map((pokemonName, index) => (
-        <div key={index}>
-          <p>{pokemonName}</p>
-        </div>
-      ));
-  
-      return <div>{pokemonElements}</div>;
-    };
-  
-    ReactDOM.render(<PokemonList />, document.getElementById('root'));
-  </script>
-</body>
+    <!-- Babel CDN 사용 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+
+      const PokemonList = () => {
+        const pokemon = ["피카츄", "라이츄", "파이리", "꼬부기"];
+
+        const updatedPokemon = pokemon.map((pokemonName) => {
+          if (pokemonName === "파이리") {
+            return "버터풀";
+          }
+          return pokemonName;
+        });
+
+        const pokemonElements = updatedPokemon.map((pokemonName, index) => (
+          <div key={index}>
+            <p>{pokemonName}</p>
+          </div>
+        ));
+
+        return <div>{pokemonElements}</div>;
+      };
+
+      ReactDOM.render(<PokemonList />, document.getElementById("root"));
+    </script>
+  </body>
 </html>
