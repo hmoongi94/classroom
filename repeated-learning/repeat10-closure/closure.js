@@ -1,4 +1,5 @@
 //? 해당 코드를 전역적으로 처리했을 때 단점은 무엇일까요?, 차근히 지역변수와 리턴 객체가 어떤 상호작용을 할 수 있는지 확인해보시기 바랍니다.
+//* 전역적으로 변수를 처리했을 경우는 Pokemon()함수로 변수를 접근할 수가 없다?
 function Pokemon(name,type){
   let privateName = name;
   let privateType = type;
