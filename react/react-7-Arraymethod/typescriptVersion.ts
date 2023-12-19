@@ -10,7 +10,7 @@ const PokemonList: React.FC = () => {
     return pokemonName;
   });
 
-  const pokemonElements = updatedPokemon.map((pokemonName, index) => (
+  const pokemonElements: React.ReactNode[] = updatedPokemon.map((pokemonName, index) => (
     <div key={index}>
       <p>{pokemonName}</p>
     </div>
