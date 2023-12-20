@@ -10,6 +10,70 @@ function createElement(tagName: string, props: Props, ...children: string[]):str
   for(let [key,value] of propEntries){
     propString += `${key}="${value}"`
   }
+
+  return `<${tagName} ${propString.trim()}${children.join('')}</${tagName}>`
 }
 
+type Pokemon ={
+  name: string;
+  id: number;
+}
 
+const pokemonList: Pokemon[]=[
+  {name: '피카츄', id:1},
+  {name: '이상해씨', id:2},
+  {name: '파이리', id:3},
+  {name: '꼬부기', id:4},
+  {name: '버터풀', id:5},
+]
+
+let battles: number = 0;
+
+function renderPokemons(pokemons: Pokemon[]):string{
+  let pokemonButtonsHtml = '';
+
+  for(let pokemon of pokemons){
+    pokemonButtonsHtml += createElement('button',{id:`pokemon-${pokemon.id}`, 'data-pokemons': pokemon.name}, `${pokemon.name}와 배틀하기`)
+  }
+
+  return createElement('div',{},`배틀 횟수: ${battles}`, pokemonButtonsHtml)
+}
+
+function setupEventListeners(rootId:string, pokemons:Pokemon[]):void{
+  const rootElement = document.getElementById(rootId)
+
+  if(rootElement === null){
+    return;
+  }
+
+  for(let pokemon of pokemons){
+    const button = document.getElementById(`pokemon-${pokemon.id}`)
+
+    // * continue문을 사용하여 button이 null일 경우는 addeventListener를 생략하고 다음 반복문으로 넘어감.
+    if(button === null){
+      continue;
+    }
+
+    button.addEventListener('click',()=> handleBattle(pokemon.name))
+  }
+}
+
+function handleBattle(pokemonName:string):void{
+  console.log(`${pokemonName}와의 배틀이 시작되었습니다!`)
+  battles += 1;
+  updateUI('root')
+}
+
+function updateUI(rootId:string):void{
+  const root = document.getElementById(rootId)
+
+  if(root === null){
+    return
+  }
+
+  root.innerHTML = renderPokemons(pokemonList);
+  setupEventListeners(rootId, pokemonList)
+}
+
+// 초기 렌더링 및 이벤트 리스너 설정
+updateUI('root')
